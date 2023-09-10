@@ -1,0 +1,34 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="/Actividad">Actividad</a>
+      <a mat-list-item href="/Administrador">Administrador</a>
+      <a mat-list-item href="/Docentes">Docentes</a>
+      <a mat-list-item href="/Estudiantes">Estudiantes</a>
+      <a mat-list-item href="/Facultad">Facultad</a>
+      <a mat-list-item href="/Observacion">Observacion
+      <a mat-list-item href="/Presentacion">Presentacion</a>
+      <a mat-list-item href="/Programa">Programa</a>
+      <a mat-list-item href="/Proyecto">Proyecto</a>
+      <a mat-list-item href="/Supervisor">Supervisor</a>
+      <a mat-list-item href="/Tarjeta">Tarjeta</a>
+      <a mat-list-item href="/Usuarios">Usuarios</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>ITC Project Manager</span>
+      <div class="names">
+        <ngx-avatars name="José Reinoso"></ngx-avatars>
+        <ngx-avatars name="Javier Sánchez"></ngx-avatars>
+      </div>
+    </mat-toolbar>
+    <router-outlett></router-outlett>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from 'src/app/Services/rest.service';
 
-
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
@@ -16,6 +15,6 @@ export class UsuarioComponent implements OnInit {
     this.get();
   }
   public get (){
-    this.api.get('Usuario');
+    this.api.get('Usuarios');
   } 
 }

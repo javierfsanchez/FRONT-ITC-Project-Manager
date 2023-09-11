@@ -12,12 +12,34 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { AvatarModule } from 'ngx-avatars';
+import { ActividadComponent } from './Components/actividad/actividad.component';
+import { AdministradorComponent } from './Components/administrador/administrador.component';
+import { DocenteComponent } from './Components/docente/docente.component';
+import { EstudianteComponent } from './Components/estudiante/estudiante.component';
+import { FacultadComponent } from './Components/facultad/facultad.component';
+import { ObservacionComponent } from './Components/observacion/observacion.component';
+import { PresentacionComponent } from './Components/presentacion/presentacion.component';
+import { ProyectoComponent } from './Components/proyecto/proyecto.component';
+import { SupervisorComponent } from './Components/supervisor/supervisor.component';
+import { TarjetaComponent } from './Components/tarjeta/tarjeta.component';
+import { ProgramaComponent } from './Components/programa/programa.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuarioComponent,
-    MenuComponent
+    MenuComponent,
+    ActividadComponent,
+    AdministradorComponent,
+    DocenteComponent,
+    EstudianteComponent,
+    FacultadComponent,
+    ObservacionComponent,
+    PresentacionComponent,
+    ProyectoComponent,
+    SupervisorComponent,
+    TarjetaComponent,
+    ProgramaComponent
   ],
   imports: [
     BrowserModule,

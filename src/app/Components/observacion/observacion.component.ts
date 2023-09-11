@@ -16,6 +16,6 @@ export class ObservacionComponent implements OnInit {
       this.get();
     }
     public get (){
-      this.api.get('Observación');
+      this.api.get('Observacions');
     } 
   }

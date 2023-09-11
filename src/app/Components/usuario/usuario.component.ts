@@ -16,6 +16,6 @@ export class UsuarioComponent implements OnInit {
     this.get();
   }
   public get (){
-    this.api.get('Usuario');
+    this.api.get('Usuarios');
   } 
 }

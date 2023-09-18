@@ -4,9 +4,10 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <!--creación de la barra de herramientas -->
     <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="/Actividades">Actividad</a>
     <!--creación de lista de navegación-->
+    <mat-nav-list> 
+      <!--Elementos de lista de navegación, href define la ruta a la que se dirigirá el usuario-->
+      <a mat-list-item href="/Actividades">Actividad</a> 
       <a mat-list-item href="/Administradores">Administrador</a>
       <a mat-list-item href="/Docentes">Docentes</a>
       <a mat-list-item href="/Estudiantes">Estudiantes</a>

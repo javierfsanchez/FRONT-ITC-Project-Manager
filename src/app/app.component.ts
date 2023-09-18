@@ -1,3 +1,4 @@
+//componente del módulo principal
 import { Component } from '@angular/core';
 
 @Component({

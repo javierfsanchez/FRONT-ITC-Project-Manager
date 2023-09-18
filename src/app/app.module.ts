@@ -26,9 +26,12 @@ import { ProgramaComponent } from './Components/programa/programa.component';
 
 @NgModule({
   declarations: [
+    //componente principal
     AppComponent,
-    UsuarioComponent,
+    //componente del menú
     MenuComponent,
+    //componentes del usuario
+    UsuarioComponent,
     ActividadComponent,
     AdministradorComponent,
     DocenteComponent,
@@ -42,10 +45,11 @@ import { ProgramaComponent } from './Components/programa/programa.component';
     ProgramaComponent
   ],
   imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
+    BrowserModule, //proporciona soporte para la ejecución en el navegador web
+    HttpClientModule, //proporciona soporte para realizar solicitudes HTTP
+    AppRoutingModule, //define las rutas 
+    BrowserAnimationsModule,//proporciona soporte para animaciones 
+    //proporcionan soporte para componentes de Material Design 
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,

@@ -1,15 +1,16 @@
 <mat-sidenav-container class="sidenav-container">
+  <!--Este componente se utiliza para crear un panel lateral que puede deslizarse hacia adentro y hacia afuera de la vista-->
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <!--creación de la barra de herramientas -->
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item href="/Actividades">Actividad</a>
+    <!--creación de lista de navegación-->
       <a mat-list-item href="/Administradores">Administrador</a>
       <a mat-list-item href="/Docentes">Docentes</a>
       <a mat-list-item href="/Estudiantes">Estudiantes</a>
       <a mat-list-item href="/Facultades">Facultad</a>
-      <a mat-list-item href="/Observaciones">Observaciones</a>
-      <a mat-list-item href="/Presentaciones">Presentaciones</a>
       <a mat-list-item href="/Programas">Programas</a>
       <a mat-list-item href="/Proyectos">Proyectos</a>
       <a mat-list-item href="/Supervisores">Supervisores</a>
@@ -25,10 +26,9 @@
       </button>
       <span>ITC Project Manager</span>
       <div class="names">
-        <ngx-avatars name="José Reinoso"></ngx-avatars>
         <ngx-avatars name="Javier Sánchez"></ngx-avatars>
       </div>
     </mat-toolbar>
-    <router-outlet></router-outlet>
+    <router-outlet></router-outlet> <!--Muestra los componentes de app-routing.module.ts según la ruta especificada-->
   </mat-sidenav-content>
 </mat-sidenav-container>

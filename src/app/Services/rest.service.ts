@@ -7,11 +7,15 @@ import { Injectable } from '@angular/core';
 export class RestService {
 
   constructor(public api: HttpClient) { }
-  url = "https://localhost:7288/api/"
+  url = "https://localhost:7121/api/"
 
   public async get ( controller: String){
-    await this.api.get(this.url+controller).toPromise().then((res)=>{
-      console.log(res);
-    });
+    var result:any
+    await this.api.get(this.url+controller).toPromise().then(x=>{
+      result = x
+      
+    })
+    return result;
+    
   }
 }

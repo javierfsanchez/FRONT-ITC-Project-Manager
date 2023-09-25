@@ -23,6 +23,13 @@ import { ProyectoComponent } from './Components/proyecto/proyecto.component';
 import { SupervisorComponent } from './Components/supervisor/supervisor.component';
 import { TarjetaComponent } from './Components/tarjeta/tarjeta.component';
 import { ProgramaComponent } from './Components/programa/programa.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+
+
 
 @NgModule({
   declarations: [
@@ -42,6 +49,10 @@ import { ProgramaComponent } from './Components/programa/programa.component';
     ProgramaComponent
   ],
   imports: [
+    MatFormFieldModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatTableModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,

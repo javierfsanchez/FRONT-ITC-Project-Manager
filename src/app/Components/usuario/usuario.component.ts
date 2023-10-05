@@ -14,11 +14,29 @@ export class UsuarioComponent implements OnInit {
   public get() {
     this.api.get('Usuarios');
   }
+<<<<<<< Updated upstream
   public post() {
     this.api.post('Usuarios', {
       Correo: 'jfsanchezi@itc.edu.co',
       Contraseña: '000000'
     });
+=======
+  
+  loadTable(data:any[]){
+    this.displayedColumns=[];
+    for(let column in data[0]){
+      this.displayedColumns.push(column)
+    }
+    this.displayedColumns.push('Acciones')
+  }
+
+  editarRegistro(){
+    alert("Prueba");
+  }
+
+  deleteRegistro(){
+    alert("Prueba2");
+>>>>>>> Stashed changes
   }
   public put() {
     this.api.put('Usuarios', '1',{

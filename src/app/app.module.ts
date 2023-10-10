@@ -28,6 +28,11 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { FormUsuarioComponent } from './Forms/form-usuario/form-usuario.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -48,7 +53,8 @@ import { MatInputModule } from '@angular/material/input';
     ProyectoComponent,
     SupervisorComponent,
     TarjetaComponent,
-    ProgramaComponent
+    ProgramaComponent,
+    FormUsuarioComponent
   ],
   imports: [
     MatInputModule,
@@ -65,7 +71,11 @@ import { MatInputModule } from '@angular/material/input';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    AvatarModule
+    AvatarModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -19,7 +19,7 @@ export class FacultadComponent implements OnInit, AfterViewInit {
   this.dataSource = new MatTableDataSource();
   }
   ngOnInit(): void {
-    this.api.get('Facultad').then((res)=>{
+    this.api.get('Facultades').then((res)=>{
     for (let index = 0; index < res.length; index++){
       this.loadTable([res[index]])
     }

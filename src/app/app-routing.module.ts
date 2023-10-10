@@ -12,6 +12,8 @@ import { ProyectoComponent } from './Components/proyecto/proyecto.component';
 import { SupervisorComponent } from './Components/supervisor/supervisor.component';
 import { TarjetaComponent } from './Components/tarjeta/tarjeta.component';
 import { UsuarioComponent } from './Components/usuario/usuario.component';
+import { FormUsuarioComponent } from './Forms/form-usuario/form-usuario.component';
+
 
 const routes: Routes = [
   {path: 'Actividades',component:ActividadComponent},
@@ -26,6 +28,7 @@ const routes: Routes = [
   {path: 'Supervisores',component:SupervisorComponent},
   {path: 'Tarjetas',component:TarjetaComponent},
   {path: 'Usuarios',component:UsuarioComponent},
+  {path: 'form-usuario',component:FormUsuarioComponent},
 ];
 
 @NgModule({

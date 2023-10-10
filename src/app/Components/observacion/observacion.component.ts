@@ -1,21 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { RestService } from 'src/app/Services/rest.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-observacion',
   templateUrl: './observacion.component.html',
   styleUrls: ['./observacion.component.css']
 })
+export class ObservacionComponent {
 
-export class ObservacionComponent implements OnInit {
-
-    constructor(public api: RestService){
-  
-    }
-    ngOnInit(): void {
-      this.get();
-    }
-    public get (){
-      this.api.get('Observacions');
-    } 
-  }
+}

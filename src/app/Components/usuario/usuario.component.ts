@@ -1,32 +1,57 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
 import { RestService } from 'src/app/Services/rest.service';
+
+
 
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
-  styleUrls: ['./usuario.component.css'],
+  styleUrls: ['./usuario.component.css']
 })
-export class UsuarioComponent implements OnInit {
-  constructor(public api: RestService) {}
+export class UsuarioComponent implements OnInit, AfterViewInit {
+  displayedColumns: string[] = [];
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  dataSource: MatTableDataSource<any>;
+  constructor(public api: RestService){
+  this.dataSource = new MatTableDataSource();
+  }
   ngOnInit(): void {
-    this.get();
+    this.api.get('Usuarios').then((res)=>{
+    for (let index = 0; index < res.length; index++){
+      this.loadTable([res[index]])
+    }
+
+   this.dataSource.data=res
+    
+
+    console.log(res);
+
+    })
   }
-  public get() {
-    this.api.get('Usuarios');
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+
   }
-  public post() {
-    this.api.post('Usuarios', {
-      Correo: 'jfsanchezi@itc.edu.co',
-      Contraseña: '000000'
-    });
+  
+  loadTable(data:any[]){
+    this.displayedColumns=[];
+    for(let column in data[0]){
+      this.displayedColumns.push(column)
+    }
   }
-  public put() {
-    this.api.put('Usuarios', '1',{
-      Correo: 'jfsanchezi@itc.edu.co',
-      Contraseña: '000000'
-    });
-  }
-  public delete() {
-    this.api.delete('Usuarios', '1');
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 }

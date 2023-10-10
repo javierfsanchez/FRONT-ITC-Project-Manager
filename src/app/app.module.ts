@@ -23,6 +23,20 @@ import { ProyectoComponent } from './Components/proyecto/proyecto.component';
 import { SupervisorComponent } from './Components/supervisor/supervisor.component';
 import { TarjetaComponent } from './Components/tarjeta/tarjeta.component';
 import { ProgramaComponent } from './Components/programa/programa.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormUsuarioComponent } from './Forms/form-usuario/form-usuario.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -39,9 +53,15 @@ import { ProgramaComponent } from './Components/programa/programa.component';
     ProyectoComponent,
     SupervisorComponent,
     TarjetaComponent,
-    ProgramaComponent
+    ProgramaComponent,
+    FormUsuarioComponent
   ],
   imports: [
+    MatInputModule,
+    MatFormFieldModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatTableModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
@@ -51,7 +71,11 @@ import { ProgramaComponent } from './Components/programa/programa.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    AvatarModule
+    AvatarModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,51 +5,51 @@ import {MatTableDataSource} from '@angular/material/table';
 import { RestService } from 'src/app/Services/rest.service';
 
 @Component({
-  selector: 'app-programa',
-  templateUrl: './programa.component.html',
-  styleUrls: ['./programa.component.css']
+  selector: 'app-presentacion',
+  templateUrl: './presentacion.component.html',
+  styleUrls: ['./presentacion.component.css']
 })
-export class ProgramaComponent implements OnInit, AfterViewInit {
-    displayedColumns: string[] = [];
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-    @ViewChild(MatSort) sort: MatSort;
-    dataSource: MatTableDataSource<any>;
-    constructor(public api: RestService){
-    this.dataSource = new MatTableDataSource();
+export class PresentacionComponent implements OnInit, AfterViewInit {
+  displayedColumns: string[] = [];
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  dataSource: MatTableDataSource<any>;
+  constructor(public api: RestService){
+  this.dataSource = new MatTableDataSource();
+  }
+  ngOnInit(): void {
+    this.api.get('Presentaciones').then((res)=>{
+    for (let index = 0; index < res.length; index++){
+      this.loadTable([res[index]])
     }
-    ngOnInit(): void {
-      this.api.get('Programas').then((res)=>{
-      for (let index = 0; index < res.length; index++){
-        this.loadTable([res[index]])
-      }
-  
-     this.dataSource.data=res
-      
-  
-      console.log(res);
-  
-      })
-    }
-  
-    ngAfterViewInit(): void {
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-  
-    }
+
+   this.dataSource.data=res
     
-    loadTable(data:any[]){
-      this.displayedColumns=[];
-      for(let column in data[0]){
-        this.displayedColumns.push(column)
-      }
-    }
+
+    console.log(res);
+
+    })
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+
+  }
   
-    applyFilter(event: Event) {
-      const filterValue = (event.target as HTMLInputElement).value;
-      this.dataSource.filter = filterValue.trim().toLowerCase();
-  
-      if (this.dataSource.paginator) {
-        this.dataSource.paginator.firstPage();
-      }
+  loadTable(data:any[]){
+    this.displayedColumns=[];
+    for(let column in data[0]){
+      this.displayedColumns.push(column)
     }
   }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+}

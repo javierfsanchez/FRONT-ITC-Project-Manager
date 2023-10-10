@@ -1,15 +1,15 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator} from '@angular/material/paginator';
+import { MatSort} from '@angular/material/sort';
+import { MatTableDataSource} from '@angular/material/table';
 import { RestService } from 'src/app/Services/rest.service';
 
 @Component({
-  selector: 'app-presentacion',
-  templateUrl: './presentacion.component.html',
-  styleUrls: ['./presentacion.component.css']
+  selector: 'app-programa',
+  templateUrl: './programa.component.html',
+  styleUrls: ['./programa.component.css']
 })
-export class PresentacionComponent implements OnInit, AfterViewInit {
+export class ProgramaComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -18,7 +18,7 @@ export class PresentacionComponent implements OnInit, AfterViewInit {
   this.dataSource = new MatTableDataSource();
   }
   ngOnInit(): void {
-    this.api.get('Presentaciones').then((res)=>{
+    this.api.get('Programas').then((res)=>{
     for (let index = 0; index < res.length; index++){
       this.loadTable([res[index]])
     }

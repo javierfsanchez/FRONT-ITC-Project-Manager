@@ -23,20 +23,18 @@ import { ProyectoComponent } from './Components/proyecto/proyecto.component';
 import { SupervisorComponent } from './Components/supervisor/supervisor.component';
 import { TarjetaComponent } from './Components/tarjeta/tarjeta.component';
 import { ProgramaComponent } from './Components/programa/programa.component';
-import {MatTableModule} from '@angular/material/table';
-import {MatSortModule} from '@angular/material/sort';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatTableModule} from '@angular/material/table';
+import { MatSortModule} from '@angular/material/sort';
+import { MatPaginatorModule} from '@angular/material/paginator';
+import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormUsuarioComponent } from './Forms/form-usuario/form-usuario.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
-
-
-
-
+import { FormEstudiantesComponent } from './Forms/form-estudiantes/form-estudiantes.component';
+import { FormAdministradoresComponent } from './Forms/form-administradores/form-administradores.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +52,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     SupervisorComponent,
     TarjetaComponent,
     ProgramaComponent,
-    FormUsuarioComponent
+    FormUsuarioComponent,
+    FormEstudiantesComponent,
+    FormAdministradoresComponent
   ],
   imports: [
     MatInputModule,

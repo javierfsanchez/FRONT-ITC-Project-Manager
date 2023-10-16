@@ -18,7 +18,7 @@ export class ProyectoComponent implements OnInit, AfterViewInit {
     this.dataSource = new MatTableDataSource();
     }
     ngOnInit(): void {
-      this.api.get('Supervisores').then((res)=>{
+      this.api.get('Proyectos').then((res)=>{
       for (let index = 0; index < res.length; index++){
         this.loadTable([res[index]])
       }

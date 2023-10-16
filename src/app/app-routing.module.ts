@@ -13,6 +13,11 @@ import { SupervisorComponent } from './Components/supervisor/supervisor.componen
 import { TarjetaComponent } from './Components/tarjeta/tarjeta.component';
 import { UsuarioComponent } from './Components/usuario/usuario.component';
 import { FormUsuarioComponent } from './Forms/form-usuario/form-usuario.component';
+import { FromTarjetasComponent } from './Forms/from-tarjetas/from-tarjetas.component';
+import { FromSupervisorComponent } from './Forms/from-supervisor/from-supervisor.component';
+import { FromProyectoComponent } from './Forms/from-proyecto/from-proyecto.component';
+import { FromProgramaComponent } from './Forms/from-programa/from-programa.component';
+import { FromPresentacionComponent } from './Forms/from-presentacion/from-presentacion.component';
 
 
 const routes: Routes = [
@@ -28,7 +33,13 @@ const routes: Routes = [
   {path: 'Supervisores',component:SupervisorComponent},
   {path: 'Tarjetas',component:TarjetaComponent},
   {path: 'Usuarios',component:UsuarioComponent},
+  {path: 'form-presentacion',component:FromPresentacionComponent},
+  {path: 'form-programa',component:FromProgramaComponent},
+  {path: 'form-proyecto',component:FromProyectoComponent},
+  {path: 'form-supervisor',component:FromSupervisorComponent},
+  {path: 'form-tarjetas',component:FromTarjetasComponent},
   {path: 'form-usuario',component:FormUsuarioComponent},
+
 ];
 
 @NgModule({

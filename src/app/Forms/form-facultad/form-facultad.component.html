@@ -1,24 +1,26 @@
 <div class="container">
-  <form [formGroup]="administradoresForm" novalidate (ngSubmit)="onSubmit()">
+  <form [formGroup]="facultadesForm" novalidate (ngSubmit)="onSubmit()">
     <mat-card class="shipping-card">
       <mat-card-header>
-        <mat-card-title>Formulario Administradores</mat-card-title>
+        <mat-card-title>Formulario Facultades</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Nombre" formControlName="nombre">
-              <mat-error *ngIf="administradoresForm.controls['nombre'].invalid">
+              <input matInput placeholder="Nombre Facultad" formControlName="nombre">
+              <mat-error *ngIf="facultadesForm.controls['nombre'].invalid">
                 {{mensajeDeError('nombre')}}
               </mat-error>
             </mat-form-field>
           </div>
+        </div>
+        <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Apellido" formControlName="apellido">
-              <mat-error *ngIf="administradoresForm.controls['apellido'].invalid">
-                {{mensajeDeError('apellido')}}
+              <textarea matInput placeholder="Descripción" formControlName="descripcion"></textarea>
+              <mat-error *ngIf="facultadesForm.controls['descripcion'].invalid">
+                {{mensajeDeError('descripcion')}}
               </mat-error>
             </mat-form-field>
           </div>
@@ -27,7 +29,7 @@
           <div class="col">
             <mat-form-field class="full-width">
               <input matInput placeholder="Número celular" formControlName="celular">
-              <mat-error *ngIf="administradoresForm.controls['celular'].invalid">
+              <mat-error *ngIf="facultadesForm.controls['celular'].invalid">
                 {{mensajeDeError('celular')}}
               </mat-error>
             </mat-form-field>
@@ -37,7 +39,7 @@
       <mat-card-actions>
         <div class="centerbutton">
           <button mat-raised-button color="primary" type="submit">Enviar</button>
-        </div>
+        </div>      
       </mat-card-actions>
     </mat-card>
   </form>

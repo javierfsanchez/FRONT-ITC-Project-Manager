@@ -44,7 +44,12 @@
   align-items: center;
 }
 
+.container form{
+  width: 476px;
+}
+
 .shipping-card{
+  width: 100%;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 50px;
 }

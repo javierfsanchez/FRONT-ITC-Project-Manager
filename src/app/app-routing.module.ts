@@ -15,6 +15,9 @@ import { UsuarioComponent } from './Components/usuario/usuario.component';
 import { FormUsuarioComponent } from './Forms/form-usuario/form-usuario.component';
 import { FormEstudiantesComponent } from './Forms/form-estudiantes/form-estudiantes.component';
 import { FormAdministradoresComponent } from './Forms/form-administradores/form-administradores.component';
+import { FormDocentesComponent } from './Forms/form-docentes/form-docentes.component';
+import { FormFacultadComponent } from './Forms/form-facultad/form-facultad.component';
+import { FormActividadesComponent } from './Forms/form-actividades/form-actividades.component';
 
 const routes: Routes = [
   {path: 'Actividades',component:ActividadComponent},
@@ -30,8 +33,11 @@ const routes: Routes = [
   {path: 'Tarjetas',component:TarjetaComponent},
   {path: 'Usuarios',component:UsuarioComponent},
   {path: 'form-usuario',component:FormUsuarioComponent},
-  {path: 'form-estudiantes',component:FormEstudiantesComponent},
+  {path: 'form-actividades',component:FormActividadesComponent},
   {path: 'form-administradores',component:FormAdministradoresComponent},
+  {path: 'form-docentes',component:FormDocentesComponent},
+  {path: 'form-estudiantes',component:FormEstudiantesComponent},
+  {path: 'form-facultades',component:FormFacultadComponent},
 ];
 
 @NgModule({

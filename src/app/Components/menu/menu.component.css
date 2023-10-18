@@ -3,7 +3,20 @@
 }
 
 .sidenav {
+  margin: 20px;
   width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 50px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
+  color: #1f2124;
+}
+
+.toolbar{
+  color: black;
+}
+
+.mat-mdc-list-base {
+  --mdc-list-list-item-label-text-color: #1f2124;
 }
 
 .sidenav .mat-toolbar {
@@ -22,4 +35,21 @@
   align-items: center;
   height: 100%;
   width: 100%;
+} 
+
+.colorbar{
+  background-color: rgb(255, 255, 255);
+  font-weight: bold;
+  color: #545454;
+  border-radius: 15px;
+  padding-left: 30px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 50px;
+  margin-bottom: 20px;
 }
+
+.desing{
+  padding: 40px;
+  padding-top: 20px;
+}
+
+

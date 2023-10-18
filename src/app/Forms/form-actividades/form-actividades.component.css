@@ -26,6 +26,15 @@
   margin-right: 0;
 }
 
+.col1{
+  width: 25%;
+  margin-right: 20px;
+}
+
+.col2{
+  width:75%;
+}
+
 .centerbutton {
   display: flex;
   margin-top: 20px;
@@ -42,6 +51,10 @@
   height: 83.3%;
   justify-content: center;
   align-items: center;
+}
+
+.container form{
+  width: 476px;
 }
 
 .shipping-card{

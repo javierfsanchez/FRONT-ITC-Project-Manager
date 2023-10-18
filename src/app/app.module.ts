@@ -35,6 +35,9 @@ import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormEstudiantesComponent } from './Forms/form-estudiantes/form-estudiantes.component';
 import { FormAdministradoresComponent } from './Forms/form-administradores/form-administradores.component';
+import { FormDocentesComponent } from './Forms/form-docentes/form-docentes.component';
+import { FormFacultadComponent } from './Forms/form-facultad/form-facultad.component';
+import { FormActividadesComponent } from './Forms/form-actividades/form-actividades.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,10 @@ import { FormAdministradoresComponent } from './Forms/form-administradores/form-
     ProgramaComponent,
     FormUsuarioComponent,
     FormEstudiantesComponent,
-    FormAdministradoresComponent
+    FormAdministradoresComponent,
+    FormDocentesComponent,
+    FormFacultadComponent,
+    FormActividadesComponent
   ],
   imports: [
     MatInputModule,

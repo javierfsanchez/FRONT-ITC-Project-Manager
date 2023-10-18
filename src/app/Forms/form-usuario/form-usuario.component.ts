@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 
 import { FormBuilder, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -17,6 +18,10 @@ export class FormUsuarioComponent {
   });
 
   onSubmit(): void {
-    alert('Usuario agregado');
+    if(this.formularioUsuario.valid){
+      Swal.fire('Felicidades','Registro exitoso','success')
+    }else {
+      Swal.fire('Peligro','Registro incorrecto','error')
+    }
   }
 }

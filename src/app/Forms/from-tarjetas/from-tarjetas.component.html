@@ -7,7 +7,6 @@
       <mat-card-content>
         <div class="row">
           <div class="col">
-            <h3>Titulo</h3>
             <mat-form-field class="full-width">
               <input matInput placeholder="Titulo" formControlName="title">
               <mat-error *ngIf="formularioTarjetas.controls['title'].hasError('required')">
@@ -16,10 +15,8 @@
             </mat-form-field>
           </div>
         </div>
-
         <div class="row"> 
           <div class="col">
-            <h3>Descripcion</h3>
             <mat-form-field class="full-width">
               <input matInput placeholder="Descripcion" formControlName="description">
               <mat-error *ngIf="formularioTarjetas.controls['description'].hasError('required')">
@@ -28,32 +25,18 @@
             </mat-form-field>
           </div>
         </div> 
-
         <div class="row"> 
           <div class="col">
-            <h3>Link</h3>
             <mat-form-field class="full-width">
               <input matInput placeholder="Link" formControlName="link">
               <mat-error *ngIf="formularioTarjetas.controls['link'].hasError('required')">
-                El enlace es<strong>requerido</strong>
+                El enlace es <strong>requerido</strong>
               </mat-error>
             </mat-form-field>
           </div>
         </div> 
         <div class="row"> 
           <div class="col">
-            <h3>Extension</h3>
-            <mat-form-field class="full-width">
-              <input matInput placeholder="Extension" formControlName="extension">
-              <mat-error *ngIf="formularioTarjetas.controls['extension'].hasError('required')">
-                La extension es <strong>requerida</strong>
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div> 
-        <div class="row"> 
-          <div class="col">
-            <h3>Observacion</h3>
             <mat-form-field class="full-width">
               <input matInput placeholder="Observacion" formControlName="observation">
               <mat-error *ngIf="formularioTarjetas.controls['observation'].hasError('required')">
@@ -64,7 +47,6 @@
         </div> 
         <div class="row"> 
           <div class="col">
-            <h3>Fecha subida</h3>
             <mat-form-field class="full-width">
               <input matInput placeholder="Fecha subida" formControlName="upload">
               <mat-error *ngIf="formularioTarjetas.controls['upload'].hasError('required')">
@@ -72,10 +54,7 @@
               </mat-error>
             </mat-form-field>
           </div>
-        </div> 
-        <div class="row"> 
           <div class="col">
-            <h3>Fecha de terminacion</h3>
             <mat-form-field class="full-width">
               <input matInput placeholder="Fecha de terminacion" formControlName="finish">
               <mat-error *ngIf="formularioTarjetas.controls['finish'].hasError('required')">
@@ -84,21 +63,10 @@
             </mat-form-field>
           </div>
         </div> 
-        <div class="row"> 
-          <div class="col">
-            <h3>Estado del proyecto</h3>
-            <mat-form-field class="full-width">
-              <input matInput placeholder="Estado del proyecto" formControlName="state">
-              <mat-error *ngIf="formularioTarjetas.controls['state'].hasError('required')">
-                El estado del proyecto es <strong>requerido</strong>
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div> 
       </mat-card-content>
       <mat-card-actions>
         <div class="centerbutton">
-          <button mat-raised-button color="primary" type="submit">Submit</button>
+          <button mat-raised-button color="primary" type="submit">Enviar</button>
         </div>
       </mat-card-actions>
     </mat-card>

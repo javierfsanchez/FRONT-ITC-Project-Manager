@@ -14,45 +14,35 @@
               </mat-error>
             </mat-form-field>
           </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Descripcion" formControlName="motivo">
+              <mat-error *ngIf="formularioProyecto.controls['motivo'].hasError('required')">
+                La descripcion es <strong>requerida</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Numero de integrantes" formControlName="motivo">
+              <mat-error *ngIf="formularioProyecto.controls['motivo'].hasError('required')">
+                El numero de integrantes es <strong>requerido</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
           <div class="row">
             <div class="col">
               <mat-form-field class="full-width">
-                <input matInput placeholder="Descripcion" formControlName="motivo">
-                <mat-error *ngIf="formularioProyecto.controls['motivo'].hasError('required')">
-                  La descripcion es <strong>requerida</strong>
+                <input matInput placeholder="Ultima actualizacion" formControlName="docente">
+                <mat-error *ngIf="formularioProyecto.controls['docente'].hasError('required')">
+                  La ultima actualizacion es <strong>requerida</strong>
                 </mat-error>
               </mat-form-field>
-            </div>
-            <div class="row">
-              <div class="col">
-                <mat-form-field class="full-width">
-                  <input matInput placeholder="Numero de integrantes" formControlName="motivo">
-                  <mat-error *ngIf="formularioProyecto.controls['motivo'].hasError('required')">
-                    El numero de integrantes es <strong>requerido</strong>
-                  </mat-error>
-                </mat-form-field>
-              </div>
-
-              <div class="row">
-                <div class="col">
-                  <mat-form-field class="full-width">
-                    <input matInput placeholder="Ultima actualizacion" formControlName="docente">
-                    <mat-error *ngIf="formularioProyecto.controls['docente'].hasError('required')">
-                     La ultima actualizacion es <strong>requerida</strong>
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <mat-form-field class="full-width">
-                      <input matInput placeholder="Titulo de la tarjeta" formControlName="docente">
-                      <mat-error *ngIf="formularioProyecto.controls['docente'].hasError('required')">
-                        El titulo es <strong>requerido</strong>
-                      </mat-error>
-                    </mat-form-field>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

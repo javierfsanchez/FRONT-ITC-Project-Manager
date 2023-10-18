@@ -1,0 +1,57 @@
+<div class="container">
+  <form [formGroup]="formularioPresentaciones" (ngSubmit)="onSubmit()">
+    <mat-card class="shipping-card">
+      <mat-card-header>
+        <mat-card-title>Formulario de Presentaciones</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Dia de presentacion" formControlName="presentacion">
+              <mat-error *ngIf="formularioPresentaciones.controls['presentacion'].hasError('required')">
+                El dia de presentacion es <strong>requerido</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Salon" formControlName="salon">
+                <mat-error *ngIf="formularioPresentaciones.controls['salon'].hasError('required')">
+                  El salon es <strong>requerida</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Nombre del proyecto" formControlName="project">
+                  <mat-error *ngIf="formularioPresentaciones.controls['project'].hasError('required')">
+                    El nombre del proyecto es <strong>requerido</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Nombre del docente" formControlName="docente">
+                    <mat-error *ngIf="formularioPresentaciones.controls['docente'].hasError('required')">
+                      El nombre del docente es <strong>requerido</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="centerbutton">
+          <button mat-raised-button color="primary" type="submit">Enviar</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

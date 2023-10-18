@@ -1,0 +1,47 @@
+<div class="container">
+  <form [formGroup]="formularioSupervisor" (ngSubmit)="onSubmit()">
+    <mat-card class="shipping-card">
+      <mat-card-header>
+        <mat-card-title>Formulario de Supervisores</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Nombre de proyecto" formControlName="proyect">
+              <mat-error *ngIf="formularioSupervisor.controls['proyect'].hasError('required')">
+                Nombre del proyecto es <strong>requerido</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Motivo" formControlName="motivo">
+                <mat-error *ngIf="formularioSupervisor.controls['motivo'].hasError('required')">
+                  El motivo es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Nombre del docente" formControlName="docente">
+                <mat-error *ngIf="formularioSupervisor.controls['docente'].hasError('required')">
+                  Nombre del docente es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="centerbutton">
+          <button mat-raised-button color="primary" type="submit">Enviar</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

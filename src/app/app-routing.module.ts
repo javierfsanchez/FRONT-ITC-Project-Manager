@@ -13,6 +13,11 @@ import { SupervisorComponent } from './Components/supervisor/supervisor.componen
 import { TarjetaComponent } from './Components/tarjeta/tarjeta.component';
 import { UsuarioComponent } from './Components/usuario/usuario.component';
 import { FormUsuarioComponent } from './Forms/form-usuario/form-usuario.component';
+import { FormEstudiantesComponent } from './Forms/form-estudiantes/form-estudiantes.component';
+import { FormAdministradoresComponent } from './Forms/form-administradores/form-administradores.component';
+import { FormDocentesComponent } from './Forms/form-docentes/form-docentes.component';
+import { FormFacultadComponent } from './Forms/form-facultad/form-facultad.component';
+import { FormActividadesComponent } from './Forms/form-actividades/form-actividades.component';
 import { FromTarjetasComponent } from './Forms/from-tarjetas/from-tarjetas.component';
 import { FromSupervisorComponent } from './Forms/from-supervisor/from-supervisor.component';
 import { FromProyectoComponent } from './Forms/from-proyecto/from-proyecto.component';
@@ -33,13 +38,17 @@ const routes: Routes = [
   {path: 'Supervisores',component:SupervisorComponent},
   {path: 'Tarjetas',component:TarjetaComponent},
   {path: 'Usuarios',component:UsuarioComponent},
+  {path: 'form-usuario',component:FormUsuarioComponent},
+  {path: 'form-actividades',component:FormActividadesComponent},
+  {path: 'form-administradores',component:FormAdministradoresComponent},
+  {path: 'form-docentes',component:FormDocentesComponent},
+  {path: 'form-estudiantes',component:FormEstudiantesComponent},
+  {path: 'form-facultades',component:FormFacultadComponent},
   {path: 'form-presentacion',component:FromPresentacionComponent},
   {path: 'form-programa',component:FromProgramaComponent},
   {path: 'form-proyecto',component:FromProyectoComponent},
   {path: 'form-supervisor',component:FromSupervisorComponent},
   {path: 'form-tarjetas',component:FromTarjetasComponent},
-  {path: 'form-usuario',component:FormUsuarioComponent},
-
 ];
 
 @NgModule({

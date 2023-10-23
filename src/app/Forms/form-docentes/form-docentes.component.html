@@ -1,0 +1,58 @@
+<div class="container">
+  <form [formGroup]="docentesForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="shipping-card">
+      <mat-card-header>
+        <mat-card-title>Formulario Docentes</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Nombre" formControlName="nombre">
+              <mat-error *ngIf="docentesForm.controls['nombre'].invalid">
+                {{mensajeDeError('nombre')}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Apellido" formControlName="apellido">
+              <mat-error *ngIf="docentesForm.controls['apellido'].invalid">
+                {{mensajeDeError('apellido')}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <h3>Identificación</h3>
+        <div class="row">
+          <div class="col1">
+            <mat-form-field class="full-width">
+              <mat-label>Tipo</mat-label>
+              <mat-select formControlName="tipoidentificacion">
+                <mat-option *ngFor="let id of identificacion" [value]="id.abbreviation">
+                  {{id.abbreviation}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="docentesForm.controls['tipoidentificacion'].invalid">
+                {{mensajeDeError('tipoidentificacion')}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col2">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Número" formControlName="numeroidentificacion">
+              <mat-error *ngIf="docentesForm.controls['numeroidentificacion'].invalid">
+                {{mensajeDeError('numeroidentificacion')}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="centerbutton">
+          <button mat-raised-button color="primary" type="submit">Enviar</button>
+        </div>      
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

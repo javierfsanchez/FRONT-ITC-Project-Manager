@@ -23,10 +23,10 @@ import { ProyectoComponent } from './Components/proyecto/proyecto.component';
 import { SupervisorComponent } from './Components/supervisor/supervisor.component';
 import { TarjetaComponent } from './Components/tarjeta/tarjeta.component';
 import { ProgramaComponent } from './Components/programa/programa.component';
-import {MatTableModule} from '@angular/material/table';
-import {MatSortModule} from '@angular/material/sort';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatTableModule} from '@angular/material/table';
+import { MatSortModule} from '@angular/material/sort';
+import { MatPaginatorModule} from '@angular/material/paginator';
+import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormUsuarioComponent } from './Forms/form-usuario/form-usuario.component';
 import { MatSelectModule } from '@angular/material/select';
@@ -38,10 +38,11 @@ import { FromSupervisorComponent } from './Forms/from-supervisor/from-supervisor
 import { FromProyectoComponent } from './Forms/from-proyecto/from-proyecto.component';
 import { FromProgramaComponent } from './Forms/from-programa/from-programa.component';
 import { FromPresentacionComponent } from './Forms/from-presentacion/from-presentacion.component';
-
-
-
-
+import { FormEstudiantesComponent } from './Forms/form-estudiantes/form-estudiantes.component';
+import { FormAdministradoresComponent } from './Forms/form-administradores/form-administradores.component';
+import { FormDocentesComponent } from './Forms/form-docentes/form-docentes.component';
+import { FormFacultadComponent } from './Forms/form-facultad/form-facultad.component';
+import { FormActividadesComponent } from './Forms/form-actividades/form-actividades.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,12 @@ import { FromPresentacionComponent } from './Forms/from-presentacion/from-presen
     SupervisorComponent,
     TarjetaComponent,
     ProgramaComponent,
+    FormUsuarioComponent,
+    FormEstudiantesComponent,
+    FormAdministradoresComponent,
+    FormDocentesComponent,
+    FormFacultadComponent,
+    FormActividadesComponent,
     FormUsuarioComponent,
     FromTarjetasComponent,
     FromSupervisorComponent,

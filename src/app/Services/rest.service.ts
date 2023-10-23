@@ -10,7 +10,7 @@ export class RestService {
   url = "https://localhost:7118/api/";
 
   public async get ( controller: String){
-    var response
+    var response:any
     await this.api.get(this.url+controller).toPromise().then((res)=>{
       response=res
       console.log(res);

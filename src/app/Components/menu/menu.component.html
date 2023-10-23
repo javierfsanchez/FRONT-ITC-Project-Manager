@@ -1,7 +1,7 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar class="toolbar">Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item href="/Actividades">Actividad</a>
       <a mat-list-item href="/Administradores">Administrador</a>
@@ -15,15 +15,21 @@
       <a mat-list-item href="/Supervisores">Supervisores</a>
       <a mat-list-item href="/Tarjetas">Tarjetas</a>
       <a mat-list-item href="/Usuarios">Usuarios</a>
+      <a mat-list-item href="/form-presentacion">Formulario Presentaciones</a>
+      <a mat-list-item href="/form-programa">Formulario Programas</a>
+      <a mat-list-item href="/form-proyecto">Formulario Proyectos</a>
+      <a mat-list-item href="/form-supervisor">Formulario Supervisores</a>
+      <a mat-list-item href="/form-tarjetas">Formulario Tarjetas</a>
+      <a mat-list-item href="/form-usuario">Formulario Usuarios</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
+  <mat-sidenav-content class="desing">
+    <mat-toolbar class="colorbar">
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>ITC Project Manager</span>
+      <span>ARXPO GESTOR DE PROYECTOS</span>
       <div class="names">
         <ngx-avatars name="Javier Sánchez"></ngx-avatars>
       </div>

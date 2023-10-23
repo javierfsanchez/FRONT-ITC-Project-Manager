@@ -33,6 +33,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FromTarjetasComponent } from './Forms/from-tarjetas/from-tarjetas.component';
+import { FromSupervisorComponent } from './Forms/from-supervisor/from-supervisor.component';
+import { FromProyectoComponent } from './Forms/from-proyecto/from-proyecto.component';
+import { FromProgramaComponent } from './Forms/from-programa/from-programa.component';
+import { FromPresentacionComponent } from './Forms/from-presentacion/from-presentacion.component';
 
 
 
@@ -54,7 +59,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     SupervisorComponent,
     TarjetaComponent,
     ProgramaComponent,
-    FormUsuarioComponent
+    FormUsuarioComponent,
+    FromTarjetasComponent,
+    FromSupervisorComponent,
+    FromProyectoComponent,
+    FromProgramaComponent,
+    FromPresentacionComponent
   ],
   imports: [
     MatInputModule,

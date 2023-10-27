@@ -43,6 +43,8 @@ import { FormAdministradoresComponent } from './Forms/form-administradores/form-
 import { FormDocentesComponent } from './Forms/form-docentes/form-docentes.component';
 import { FormFacultadComponent } from './Forms/form-facultad/form-facultad.component';
 import { FormActividadesComponent } from './Forms/form-actividades/form-actividades.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -92,7 +94,9 @@ import { FormActividadesComponent } from './Forms/form-actividades/form-activida
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

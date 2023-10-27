@@ -17,7 +17,7 @@ export class FormEstudiantesComponent {
       Validators.required,
       Validators.minLength(10),
       Validators.maxLength(10),
-      Validators.pattern(/^[1-9]\d{10,10}$/),
+      Validators.pattern(/^[1-9]\d{9,10}$/),
     ]),
     tipoidentificacion: new FormControl<string>(null, [Validators.required]),
     numeroidentificacion: new FormControl<string>(null,[

@@ -4,19 +4,23 @@
 
 .sidenav {
   margin: 20px;
-  width: 200px;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 50px;
+  width: 160px;
+  box-shadow: rgba(18, 11, 60, 0.7) 0px 0px 25px;
   border-radius: 20px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(18, 11, 60);
   color: #1f2124;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
 }
 
 .toolbar{
-  color: black;
+  color: white;
 }
 
 .mat-mdc-list-base {
-  --mdc-list-list-item-label-text-color: #1f2124;
+  --mdc-list-list-item-label-text-color: #f7f7f7;
 }
 
 .sidenav .mat-toolbar {
@@ -43,24 +47,7 @@
   color: #545454;
   border-radius: 15px;
   padding-left: 30px;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 50px;
-  margin-bottom: 20px;
-}
-
-.desing{
-  padding: 40px;
-  padding-top: 20px;
-}
-
-
-
-.colorbar{
-  background-color: rgb(255, 255, 255);
-  font-weight: bold;
-  color: #545454;
-  border-radius: 15px;
-  padding-left: 30px;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 50px;
+  box-shadow: rgba(28, 0, 255, 0.1) 0px 0px 50px;
   margin-bottom: 20px;
 }
 

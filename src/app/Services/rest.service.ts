@@ -27,8 +27,9 @@ export class RestService {
       console.log(res);
     });
   }
-  public async delete ( controller: String, id: string){
-    await this.api.delete(this.url+controller+id).toPromise().then((res)=>{
+ 
+  public async delete(controller: string, id: string, text: any = {}) {
+    await this.api.delete(this.url+controller+'/'+id, text).toPromise().then((res)=>{
       console.log(res);
     });
   }

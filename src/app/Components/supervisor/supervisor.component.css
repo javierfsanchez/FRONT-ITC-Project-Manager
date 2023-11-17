@@ -1,12 +1,73 @@
+.mat-elevation-z8, .radius{
+  border-radius: 20px;
+}
+
+.mat-elevation-z8{
+  box-shadow: rgba(18, 11, 60, 0.2) 0px 0px 50px;
+}
+
+.spinner{
+  margin: auto;
+  --mdc-circular-progress-active-indicator-color: rgb(18, 11, 60);
+}
+
+.radius th{
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.container {
+  border-radius: 20px;
+  width: 100%;
+  height: 83.3%;
+}
+  
 table {
-    width: 100%;
-  }
-  
-  .mat-mdc-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
-  
-  td, th {
-    width: 25%;
-  }
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+
+.boton{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.mat-mdc-raised-button.mat-primary{
+  --mdc-protected-button-container-color: rgb(18, 11, 60);
+  box-shadow: rgba(18, 11, 60, 0.5) 0px 0px 15px;
+  border-radius: 10px;
+}
+
+.opcion1, .opcion2{
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.opcion1{
+  color: #5f5ffd;
+  width: 40%;
+  height: 100%;
+}
+
+.opcion2{
+  color: #ff5e5e;
+}
+
+.botonesAcciones{
+  display: flex;
+  justify-content: space-around;
+  margin-right: 15px;
+}
+
+.boton{
+  margin-top: 20px;
+}

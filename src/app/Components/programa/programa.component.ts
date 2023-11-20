@@ -3,7 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator} from '@angular/material/paginator';
 import { MatSort} from '@angular/material/sort';
 import { MatTableDataSource} from '@angular/material/table';
-import { FormEstudiantesComponent } from 'src/app/Forms/form-estudiantes/form-estudiantes.component';
+import { FromProgramaComponent } from 'src/app/Forms/from-programa/from-programa.component';
+import { FormsService } from 'src/app/Services/forms.service';
 import { RestService } from 'src/app/Services/rest.service';
 import Swal from 'sweetalert2';
 
@@ -21,7 +22,7 @@ export class ProgramaComponent implements OnInit, AfterViewInit {
     @ViewChild(MatSort) sort: MatSort;
     dataSource: MatTableDataSource<any>;
 
-    constructor(public api: RestService, public dialog: MatDialog){
+    constructor(public FromServices:FormsService, public api: RestService, public dialog: MatDialog){
       this.dataSource = new MatTableDataSource();
     }
 
@@ -76,8 +77,9 @@ export class ProgramaComponent implements OnInit, AfterViewInit {
     //   this.api.delete("Estudiantes/", id);
     // }
 
-    public editarRegistro(index: number){
-      alert("Editando el registro");
+    public editarRegistro(id: number){
+      this.FromServices.title='Editar';
+      console.log(id);
     }
     
     ngAfterViewInit(): void {
@@ -106,7 +108,8 @@ export class ProgramaComponent implements OnInit, AfterViewInit {
     }
 
     openDialog() {
-      this.dialog.open(FormEstudiantesComponent, {
+      this.FromServices.title='Crear';
+      this.dialog.open(FromProgramaComponent, {
         width: '50%'
       });
     }

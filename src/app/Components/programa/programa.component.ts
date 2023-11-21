@@ -77,10 +77,17 @@ export class ProgramaComponent implements OnInit, AfterViewInit {
     //   this.api.delete("Estudiantes/", id);
     // }
 
-    public editarRegistro(id: number){
+    editarRegistro(element: any){
       this.FromServices.title='Editar';
-      console.log(id);
-    }
+      this.dialog.open(FromProgramaComponent);
+      console.log(element);
+
+      this.FromServices.Programas=element
+      console.log(element.codigo);
+      
+
+      
+    } 
     
     ngAfterViewInit(): void {
       this.dataSource.paginator = this.paginator;

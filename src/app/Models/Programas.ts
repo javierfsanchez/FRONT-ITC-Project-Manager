@@ -1,5 +1,5 @@
-export class ProgramasMV{
-    codigo: number; 
+export class Programas{
+    id: number; 
     nombre_Programa: string;
     descripcion: string;
     facultad:string;

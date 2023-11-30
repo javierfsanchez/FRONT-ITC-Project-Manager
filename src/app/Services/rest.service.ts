@@ -9,9 +9,17 @@ export class RestService {
   constructor(public api: HttpClient) { }
   url = "https://localhost:7118/api/";
 
-  public async get ( controller: String){
+  public async get ( controller: string){
     var response:any
     await this.api.get(this.url+controller).toPromise().then((res)=>{
+      response=res
+      console.log(res);
+    });
+    return response
+  }
+  public async getById(controller: string, id: number){
+    var response:any
+    await this.api.get(this.url+controller+"/"+id).toPromise().then((res)=>{
       response=res
       console.log(res);
     });
@@ -22,7 +30,7 @@ export class RestService {
       console.log(res);
     });
   }
-  public async put ( controller: String, id: string, text: any){
+  public async put ( controller: string, id: string, text: any){
     await this.api.put(this.url+controller+'/'+id, text).toPromise().then((res)=>{
       console.log(res);
     });

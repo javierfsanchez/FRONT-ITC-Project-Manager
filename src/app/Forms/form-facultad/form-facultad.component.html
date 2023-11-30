@@ -28,9 +28,25 @@
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Número celular" formControlName="celular">
-              <mat-error *ngIf="facultadesForm.controls['celular'].invalid">
-                {{mensajeDeError('celular')}}
+              <input matInput placeholder="Número celular" formControlName="telefono_contacto">
+              <mat-error *ngIf="facultadesForm.controls['telefono_contacto'].invalid">
+                {{mensajeDeError('telefono_contacto')}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="correo" formControlName="correo">
+              <mat-error *ngIf="facultadesForm.controls['correo'].invalid">
+                {{mensajeDeError('correo')}}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <input matInput placeholder="estado" formControlName="estado">
+              <mat-error *ngIf="facultadesForm.controls['estado'].invalid">
+                {{mensajeDeError('estado')}}
               </mat-error>
             </mat-form-field>
           </div>

@@ -1,5 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, Inject, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef, matDialogAnimations } from '@angular/material/dialog';
+import { facultadesModel } from 'src/app/Models/facultadesModel';
+import { RestService } from 'src/app/Services/rest.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -7,29 +10,53 @@ import Swal from 'sweetalert2';
   templateUrl: './form-facultad.component.html',
   styleUrls: ['./form-facultad.component.css']
 })
-export class FormFacultadComponent {
-  constructor(){}
+export class FormFacultadComponent implements OnInit{
+  constructor(private api: RestService, private ref: MatDialogRef<FormFacultadComponent>, @Inject(MAT_DIALOG_DATA)private data: any){}
+
+  ngOnInit(): void {
+    console.log(this.data.id);
+    if (Boolean(this.data.id)){
+      this.cargarform(this.data.id);
+    }
+  }
+  async cargarform(id: number){
+    let objeto:facultadesModel = await this.api.getById("facultades",id);
+    this.facultadesForm.controls.nombre.setValue(objeto.nombre);
+    this.facultadesForm.controls.descripcion.setValue(objeto.descripcion);
+    this.facultadesForm.controls.telefono_contacto.setValue(objeto.telefonoContacto);
+    this.facultadesForm.controls.correo.setValue(objeto.correo);
+    this.facultadesForm.controls.estado.setValue(objeto.estado);
+  }
 
   facultadesForm = new FormGroup({
     nombre: new FormControl<string>(null, [Validators.required]),
-    apellido: new FormControl<string>(null, [Validators.required]),
-    celular: new FormControl<string>(null, [
-      Validators.required,
-      Validators.minLength(10),
-      Validators.maxLength(10),
-      Validators.pattern(/^[1-9]\d{10,10}$/),
-    ]),
-    descripcion: new FormControl<String>(null, [
+    telefono_contacto: new FormControl<string>(null, [Validators.required]),
+    descripcion: new FormControl<string>(null, [
       Validators.required,
       Validators.maxLength(30),
-    ])
+    ]),
+    correo: new FormControl<string>(null, [Validators.required]),
+    estado: new FormControl<string>(null, [Validators.required]),
   });
 
   hasUnitNumber = false;
 
-  onSubmit(): void {
+  async onSubmit() {
     if (this.facultadesForm.valid) {
-      Swal.fire('Felicidades', 'Registro exitoso', 'success');
+      let nuevo = new facultadesModel();
+      nuevo.nombre = this.facultadesForm.controls.nombre.value;
+      nuevo.descripcion = this.facultadesForm.controls.descripcion.value;
+      nuevo.telefonoContacto = this.facultadesForm.controls.telefono_contacto.value;
+      nuevo.correo = this.facultadesForm.controls.correo.value;
+      nuevo.estado = this.facultadesForm.controls.estado.value;
+      if (Boolean(this.data.id)){
+        nuevo.id=this.data.id;
+        await this.api.put('Facultades', this.data.id, nuevo);
+      }else{
+        await this.api.post('Facultades', nuevo);
+      }
+      this.ref.close();
+      Swal.fire('Felicidades', 'Dato enviado', 'success');
     } else {
       Swal.fire('Error', 'Credenciales incorrectas', 'error');
     }

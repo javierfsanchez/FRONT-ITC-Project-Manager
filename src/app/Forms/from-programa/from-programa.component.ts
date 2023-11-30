@@ -1,8 +1,7 @@
-import { Component, OnInit, inject } from '@angular/core';
-
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { Programas } from 'src/app/Models/Programas';
-import { FormsService } from 'src/app/Services/forms.service';
+import { Component, Inject, OnInit, inject } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { programasModel } from 'src/app/Models/programasModel';
 import { RestService } from 'src/app/Services/rest.service';
 import Swal from 'sweetalert2';
 
@@ -13,51 +12,69 @@ import Swal from 'sweetalert2';
   styleUrls: ['./from-programa.component.css']
 })
 export class FromProgramaComponent implements OnInit {
-  private fb = inject(FormBuilder);
-  formularioProgramas = this.fb.group({
-    program: ['', Validators.required],
-    descripcion: ['', Validators.required],
-    facultad: ['', Validators.required],
-       
+  constructor(private api: RestService, private ref: MatDialogRef<FromProgramaComponent>, @Inject(MAT_DIALOG_DATA)private data: any){}
+
+  ngOnInit(): void {
+    console.log(this.data.id);
+    if (Boolean(this.data.id)){
+      this.cargarform(this.data.id);
+    }
+  }
+  async cargarform(id: number){
+    let objeto:programasModel = await this.api.getById("programas",id);
+    this.programasForm.controls.nombrePrograma.setValue(objeto.nombrePrograma);
+    this.programasForm.controls.descripcion.setValue(objeto.descripcion);
+    this.programasForm.controls.id_Facultad.setValue(objeto.idFacultad);
+    this.programasForm.controls.estado.setValue(objeto.estado);
+  }
+
+  programasForm = new FormGroup({
+    nombrePrograma: new FormControl<string>(null, [Validators.required]),
+    descripcion: new FormControl<string>(null, [
+      Validators.required,
+      Validators.maxLength(30),
+    ]),
+    id_Facultad: new FormControl<string>(null, [Validators.required]),
+    estado: new FormControl<string>(null, [Validators.required]),
   });
 
+  hasUnitNumber = false;
 
-  constructor(public FormService:FormsService, public api:RestService) {
-  
-  
-}
-title:string;
-  ngOnInit(): void {
-    if(this.FormService.title=='Editar'){
-      this.title='Editar';
-      this.formularioProgramas.setControl('program', new FormControl(this.FormService.Programas.nombre_Programa));
-      this.formularioProgramas.setControl('descripcion', new FormControl(this.FormService.Programas.descripcion));
-      this.formularioProgramas.setControl('facultad', new FormControl(this.FormService.Programas.facultad));
-    } else if(this.FormService.title=='Crear'){
-      this.title='Crear';
-
-    }
-  }
-
-  onSubmit(): void {
-    if(this.formularioProgramas.valid){
-      if(this.FormService.title=='Editar'){
-        let object:Programas = {
-          id:Number(this.FormService.Programas.codigo),
-          nombre_Programa:this.formularioProgramas.controls['program'].value,
-          descripcion:this.formularioProgramas.controls['descripcion'].value,
-          facultad:this.formularioProgramas.controls['facultad'].value,
-          estado:this.FormService.Programas.estado       
-
-        }
-        this.api.put('Programas', this.FormService.Programas.codigo.toString(), object);
-
-
+  async onSubmit() {
+    if (this.programasForm.valid) {
+      let nuevo = new programasModel();
+      nuevo.nombrePrograma = this.programasForm.controls.nombrePrograma.value;
+      nuevo.descripcion = this.programasForm.controls.descripcion.value;
+      nuevo.idFacultad = this.programasForm.controls.id_Facultad.value;
+      nuevo.estado = this.programasForm.controls.estado.value;
+      if (Boolean(this.data.id)){
+        nuevo.id=this.data.id;
+        await this.api.put('programas', this.data.id, nuevo);
+      }else{
+        await this.api.post('programas', nuevo);
       }
-      Swal.fire('Felicidades','Registro exitoso','success')
-    }else {
-      Swal.fire('Peligro','Registro incorrecto','error')
+      this.ref.close();
+      Swal.fire('Felicidades', 'Dato enviado', 'success');
+    } else {
+      Swal.fire('Error', 'Credenciales incorrectas', 'error');
     }
   }
-  
+
+  public mensajeDeError(formControl: string): string {
+    if (this.programasForm.controls[formControl].hasError('required')) {
+      return 'Este campo es requerido';
+    }
+    if (this.programasForm.controls[formControl].hasError('maxlength')) {
+      let valor = this.programasForm.controls[formControl].errors['maxlength'].requiredLength;
+      return 'Máximo de ' + valor + ' carácteres';
+    }
+    if (this.programasForm.controls[formControl].hasError('minlength')) {
+      let valor = this.programasForm.controls[formControl].errors['minlength'].requiredLength;
+      return 'Mínimo de ' + valor + ' carácteres';
+    }
+    if (this.programasForm.controls[formControl].hasError('pattern')) {
+      return 'Este campo solo puede contener números';
+    }
+    return '';
+  }
 }

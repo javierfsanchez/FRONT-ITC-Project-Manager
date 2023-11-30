@@ -106,7 +106,7 @@ export class FacultadComponent implements OnInit, AfterViewInit {
 
     openDialog() {
       this.dialog.open(FormFacultadComponent, {
-        width: '50%'
+        width: '50%', data: {}
       }).afterClosed().subscribe((res)=>{this.ngOnInit()});
     }
   }

@@ -1,73 +1,97 @@
 <div class="container">
-  <form [formGroup]="formularioTarjetas" (ngSubmit)="onSubmit()">
+  <form [formGroup]="tarjetasForm" novalidate (ngSubmit)="onSubmit()">
     <mat-card class="shipping-card">
       <mat-card-header>
-        <mat-card-title>Formulario de Usuarios</mat-card-title>
+        <mat-card-title>Formulario Tarjetas</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Titulo" formControlName="title">
-              <mat-error *ngIf="formularioTarjetas.controls['title'].hasError('required')">
-                El titulo es <strong>requerido</strong>
+              <input matInput placeholder="Titulo" formControlName="titulo">
+              <mat-error *ngIf="tarjetasForm.controls['titulo'].invalid">
+                {{mensajeDeError('titulo')}}
               </mat-error>
             </mat-form-field>
           </div>
         </div>
-        <div class="row"> 
+        <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Descripcion" formControlName="description">
-              <mat-error *ngIf="formularioTarjetas.controls['description'].hasError('required')">
-                La descripcion es <strong>requerido</strong>
+              <textarea matInput placeholder="Descripción" formControlName="descripcion"></textarea>
+              <mat-error *ngIf="tarjetasForm.controls['descripcion'].invalid">
+                {{mensajeDeError('descripcion')}}
               </mat-error>
             </mat-form-field>
           </div>
-        </div> 
-        <div class="row"> 
+        </div>
+        <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Link" formControlName="link">
-              <mat-error *ngIf="formularioTarjetas.controls['link'].hasError('required')">
-                El enlace es <strong>requerido</strong>
+              <input matInput placeholder="link" formControlName="link">
+              <mat-error *ngIf="tarjetasForm.controls['link'].invalid">
+                {{mensajeDeError('link')}}
               </mat-error>
             </mat-form-field>
           </div>
-        </div> 
-        <div class="row"> 
+        </div>
+        <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Observacion" formControlName="observation">
-              <mat-error *ngIf="formularioTarjetas.controls['observation'].hasError('required')">
-                La observacion de la tarjeta es <strong>requerido</strong>
+              <input matInput placeholder="extension" formControlName="extension">
+              <mat-error *ngIf="tarjetasForm.controls['extension'].invalid">
+                {{mensajeDeError('extension')}}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <input matInput placeholder="observacion" formControlName="observacion">
+              <mat-error *ngIf="tarjetasForm.controls['observacion'].invalid">
+                {{mensajeDeError('observacion')}}
               </mat-error>
             </mat-form-field>
           </div>
-        </div> 
-        <div class="row"> 
+        </div>
+        <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Fecha subida" formControlName="upload">
-              <mat-error *ngIf="formularioTarjetas.controls['upload'].hasError('required')">
-                La fecha de subida es <strong>requerida</strong>
+                <input matInput [matDatepicker]="picker" placeholder="fechaSubida" formControlName="fechaSubida">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="tarjetasForm.controls['fechaSubida'].invalid">
+                  {{mensajeDeError('fechaSubida')}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <input matInput [matDatepicker]="picker1" placeholder="fechaTerminado" formControlName="fechaTerminado">
+              <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+              <mat-error *ngIf="tarjetasForm.controls['fechaTerminado'].invalid">
+                {{mensajeDeError('fechaTerminado')}}
               </mat-error>
             </mat-form-field>
           </div>
+        </div>
+        <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Fecha de terminacion" formControlName="finish">
-              <mat-error *ngIf="formularioTarjetas.controls['finish'].hasError('required')">
-                La fecha de terminacion es <strong>requerida</strong>
+              <input matInput placeholder="estadoTarjeta" formControlName="estadoTarjeta">
+              <mat-error *ngIf="tarjetasForm.controls['estadoTarjeta'].invalid">
+                {{mensajeDeError('estadoTarjeta')}}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <input matInput placeholder="estado" formControlName="estado">
+              <mat-error *ngIf="tarjetasForm.controls['estado'].invalid">
+                {{mensajeDeError('estado')}}
               </mat-error>
             </mat-form-field>
           </div>
-        </div> 
+        </div>
       </mat-card-content>
       <mat-card-actions>
         <div class="centerbutton">
           <button mat-raised-button color="primary" type="submit">Enviar</button>
-        </div>
+        </div>      
       </mat-card-actions>
     </mat-card>
   </form>

@@ -76,8 +76,11 @@ export class TarjetaComponent implements OnInit, AfterViewInit {
     //   this.api.delete("Estudiantes/", id);
     // }
 
-    public editarRegistro(index: number){
-      alert("Editando el registro");
+    public editarRegistro(index: any){
+      this.dialog.open(FromTarjetasComponent, {
+        width: '50%',
+        data :{id: index.codigo}
+      }).afterClosed().subscribe((res)=>{this.ngOnInit()});
     }
     
     ngAfterViewInit(): void {
@@ -106,7 +109,7 @@ export class TarjetaComponent implements OnInit, AfterViewInit {
     }
     openDialog() {
       this.dialog.open(FromTarjetasComponent, {
-        width: '50%'
-      });
+        width: '50%', data: {}
+      }).afterClosed().subscribe((res)=>{this.ngOnInit()});
     }
   }

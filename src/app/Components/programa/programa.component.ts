@@ -4,11 +4,8 @@ import { MatPaginator} from '@angular/material/paginator';
 import { MatSort} from '@angular/material/sort';
 import { MatTableDataSource} from '@angular/material/table';
 import { FromProgramaComponent } from 'src/app/Forms/from-programa/from-programa.component';
-import { FormsService } from 'src/app/Services/forms.service';
 import { RestService } from 'src/app/Services/rest.service';
 import Swal from 'sweetalert2';
-
-
 
 @Component({
   selector: 'app-programa',
@@ -22,7 +19,7 @@ export class ProgramaComponent implements OnInit, AfterViewInit {
     @ViewChild(MatSort) sort: MatSort;
     dataSource: MatTableDataSource<any>;
 
-    constructor(public FromServices:FormsService, public api: RestService, public dialog: MatDialog){
+    constructor(public api: RestService, public dialog: MatDialog){
       this.dataSource = new MatTableDataSource();
     }
 
@@ -53,16 +50,14 @@ export class ProgramaComponent implements OnInit, AfterViewInit {
           confirmButtonText: 'Eliminar'
       }).then((result) => {
           if (result.isConfirmed) {
-              this.api.delete('Programas', id.toString(), { activo: false }) // Llama al método Put para marcar el estudiante como inactivo
+              this.api.delete('Programas', id.toString(), { activo: "I" }) // Llama al método Put para marcar el estudiante como inactivo
                   .then(() => {
                       Swal.fire(
                           'Eliminado!',
                           `El registro con el id ${id} ha sido eliminado.`,
                           'success'
                       );
-                      setInterval(() => {
-                          window.location.reload();
-                      }, 2000);
+                      this.ngOnInit();
                   })
                   .catch((error) => {
                       console.error(error);
@@ -77,17 +72,12 @@ export class ProgramaComponent implements OnInit, AfterViewInit {
     //   this.api.delete("Estudiantes/", id);
     // }
 
-    editarRegistro(element: any){
-      this.FromServices.title='Editar';
-      this.dialog.open(FromProgramaComponent);
-      console.log(element);
-
-      this.FromServices.Programas=element
-      console.log(element.codigo);
-      
-
-      
-    } 
+    public editarRegistro(index: any){
+      this.dialog.open(FromProgramaComponent, {
+        width: '50%',
+        data :{id: index.codigo}
+      }).afterClosed().subscribe((res)=>{this.ngOnInit()});
+    }
     
     ngAfterViewInit(): void {
       this.dataSource.paginator = this.paginator;
@@ -115,9 +105,8 @@ export class ProgramaComponent implements OnInit, AfterViewInit {
     }
 
     openDialog() {
-      this.FromServices.title='Crear';
       this.dialog.open(FromProgramaComponent, {
-        width: '50%'
-      });
+        width: '50%', data: {}
+      }).afterClosed().subscribe((res)=>{this.ngOnInit()});
     }
   }

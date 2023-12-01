@@ -1,42 +1,46 @@
 <div class="container">
-  <form [formGroup]="formularioUsuario" (ngSubmit)="onSubmit()">
+  <form [formGroup]="usuariosForm" novalidate (ngSubmit)="onSubmit()">
     <mat-card class="shipping-card">
       <mat-card-header>
-        <mat-card-title>Formulario de Usuarios</mat-card-title>
+        <mat-card-title>Formulario Usuarios</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Nombre de usuario" formControlName="firstName">
-              <mat-error *ngIf="formularioUsuario.controls['firstName'].hasError('required')">
-                Nombre del usuario es <strong>requerido</strong>
+              <input matInput placeholder="Correo" formControlName="correo">
+              <mat-error *ngIf="usuariosForm.controls['correo'].invalid">
+                {{mensajeDeError('correo')}}
               </mat-error>
             </mat-form-field>
           </div>
-          <div class="row">
-            <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput placeholder="Correo electronico" formControlName="email">
-                <mat-error *ngIf="formularioUsuario.controls['email'].hasError('required')">
-                  El email del usuario es <strong>requerido</strong>
-                </mat-error>
-                
-                <mat-error *ngIf="formularioUsuario.controls['email'].hasError('email')">
-                  ingrese un correo valido <strong>example@example.com</strong>
-                </mat-error>
-              </mat-form-field>
-            </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Contraseña" formControlName="contraseña">
+              <mat-error *ngIf="usuariosForm.controls['contraseña'].invalid">
+                {{mensajeDeError('contraseña')}}
+              </mat-error>
+            </mat-form-field>
           </div>
         </div>
-        
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Estado" formControlName="estado">
+              <mat-error *ngIf="usuariosForm.controls['estado'].invalid">
+                {{mensajeDeError('estado')}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
       </mat-card-content>
       <mat-card-actions>
         <div class="centerbutton">
           <button mat-raised-button color="primary" type="submit">Enviar</button>
-        </div>
+        </div>      
       </mat-card-actions>
     </mat-card>
   </form>
-
 </div>

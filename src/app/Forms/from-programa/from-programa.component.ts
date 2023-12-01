@@ -5,7 +5,6 @@ import { programasModel } from 'src/app/Models/programasModel';
 import { RestService } from 'src/app/Services/rest.service';
 import Swal from 'sweetalert2';
 
-
 @Component({
   selector: 'app-from-programa',
   templateUrl: './from-programa.component.html',
@@ -13,6 +12,16 @@ import Swal from 'sweetalert2';
 })
 export class FromProgramaComponent implements OnInit {
   constructor(private api: RestService, private ref: MatDialogRef<FromProgramaComponent>, @Inject(MAT_DIALOG_DATA)private data: any){}
+
+  programasForm = new FormGroup({
+    nombrePrograma: new FormControl<string>(null, [Validators.required]),
+    descripcion: new FormControl<string>(null, [
+      Validators.required,
+      Validators.maxLength(30),
+    ]),
+    id_Facultad: new FormControl<string>(null, [Validators.required]),
+    estado: new FormControl<string>(null, [Validators.required]),
+  });
 
   ngOnInit(): void {
     console.log(this.data.id);
@@ -27,16 +36,6 @@ export class FromProgramaComponent implements OnInit {
     this.programasForm.controls.id_Facultad.setValue(objeto.idFacultad);
     this.programasForm.controls.estado.setValue(objeto.estado);
   }
-
-  programasForm = new FormGroup({
-    nombrePrograma: new FormControl<string>(null, [Validators.required]),
-    descripcion: new FormControl<string>(null, [
-      Validators.required,
-      Validators.maxLength(30),
-    ]),
-    id_Facultad: new FormControl<string>(null, [Validators.required]),
-    estado: new FormControl<string>(null, [Validators.required]),
-  });
 
   hasUnitNumber = false;
 

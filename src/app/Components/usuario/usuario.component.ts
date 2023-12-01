@@ -7,12 +7,12 @@ import { FormUsuarioComponent } from 'src/app/Forms/form-usuario/form-usuario.co
 import { RestService } from 'src/app/Services/rest.service';
 import Swal from 'sweetalert2';
 
-
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
   styleUrls: ['./usuario.component.css']
 })
+
 export class UsuarioComponent implements OnInit, AfterViewInit {
     displayedColumns: string[] = [];  
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -50,16 +50,14 @@ export class UsuarioComponent implements OnInit, AfterViewInit {
           confirmButtonText: 'Eliminar'
       }).then((result) => {
           if (result.isConfirmed) {
-              this.api.delete('Usuarios', id.toString(), { activo: false }) // Llama al método Put para marcar el estudiante como inactivo
+              this.api.delete('Usuarios', id.toString(), { activo: "I" }) // Llama al método Put para marcar el estudiante como inactivo
                   .then(() => {
                       Swal.fire(
                           'Eliminado!',
                           `El registro con el id ${id} ha sido eliminado.`,
                           'success'
                       );
-                      setInterval(() => {
-                          window.location.reload();
-                      }, 2000);
+                      this.ngOnInit();
                   })
                   .catch((error) => {
                       console.error(error);
@@ -74,8 +72,11 @@ export class UsuarioComponent implements OnInit, AfterViewInit {
     //   this.api.delete("Estudiantes/", id);
     // }
 
-    public editarRegistro(index: number){
-      alert("Editando el registro");
+    public editarRegistro(index: any){
+      this.dialog.open(FormUsuarioComponent, {
+        width: '50%',
+        data :{id: index.codigo}
+      }).afterClosed().subscribe((res)=>{this.ngOnInit()});
     }
     
     ngAfterViewInit(): void {
@@ -102,9 +103,11 @@ export class UsuarioComponent implements OnInit, AfterViewInit {
         this.dataSource.paginator.firstPage();
       }
     }
-openDialog() {
+
+    openDialog() {
       this.dialog.open(FormUsuarioComponent, {
-        width: '50%'
-      });
+        width: '50%', data: {}
+      }).afterClosed().subscribe((res)=>{this.ngOnInit()});
     }
   }
+  

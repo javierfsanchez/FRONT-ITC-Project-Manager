@@ -49,6 +49,7 @@ export class FormFacultadComponent implements OnInit{
       nuevo.telefonoContacto = this.facultadesForm.controls.telefono_contacto.value;
       nuevo.correo = this.facultadesForm.controls.correo.value;
       nuevo.estado = this.facultadesForm.controls.estado.value;
+      
       if (Boolean(this.data.id)){
         nuevo.id=this.data.id;
         await this.api.put('Facultades', this.data.id, nuevo);

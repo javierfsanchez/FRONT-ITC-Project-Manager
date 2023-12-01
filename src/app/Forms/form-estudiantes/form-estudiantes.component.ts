@@ -1,5 +1,8 @@
-import { Component, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { Component, Inject, OnInit, inject } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef, matDialogAnimations } from '@angular/material/dialog';
+import { estudiantesModel } from 'src/app/Models/EstudiantesModel';
+import { RestService } from 'src/app/Services/rest.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -7,26 +10,25 @@ import Swal from 'sweetalert2';
   templateUrl: './form-estudiantes.component.html',
   styleUrls: ['./form-estudiantes.component.css'],
 })
-export class FormEstudiantesComponent {
-  constructor() {}
+export class FormEstudiantesComponent implements OnInit{
+  constructor(private api: RestService, private ref: MatDialogRef<FormEstudiantesComponent>, @Inject(MAT_DIALOG_DATA) private data: any) { }
 
   estudiantesForm = new FormGroup({
-    nombre: new FormControl<string>(null, [Validators.required]),
-    apellido: new FormControl<string>(null, [Validators.required]),
-    celular: new FormControl<string>(null, [
-      Validators.required,
-      Validators.minLength(10),
-      Validators.maxLength(10),
-      Validators.pattern(/^[1-9]\d{9,10}$/),
-    ]),
-    tipoidentificacion: new FormControl<string>(null, [Validators.required]),
-    numeroidentificacion: new FormControl<string>(null,[
-      Validators.required,
-      Validators.pattern(/^[1-9]\d{1,50}$/)],   
-    ),
+    idUsuario: new FormControl<number>(null, [Validators.required]),
+    nombre: new FormControl<string>('', [Validators.required]),
+    telefono: new FormControl<string>(''),
+    tipoIdentificacion: new FormControl<string>('', [Validators.required]),
+    identificacion: new FormControl<number>(null, [Validators.required]),
+    idPrograma: new FormControl<number>(null, [Validators.required]),
+    idProyecto: new FormControl<number>(null, [Validators.required]),
+    estado: new FormControl<string>('', [Validators.required]),
   });
 
-  hasUnitNumber = false;
+  ngOnInit(): void {
+    if (Boolean(this.data.id)) {
+      this.cargarform(this.data.id);
+    }
+  }
 
   identificacion = [  
     { name: 'Ninguno' },
@@ -34,11 +36,41 @@ export class FormEstudiantesComponent {
     { name: 'Cédula de ciudadanía', abbreviation: 'CC' },
   ];
 
-  onSubmit(): void {
+  async cargarform(id: number) {
+    const objeto: estudiantesModel = await this.api.getById("estudiantes", id);
+    this.estudiantesForm.controls.idUsuario.setValue(objeto.idUsuario);
+    this.estudiantesForm.controls.nombre.setValue(objeto.nombre);
+    this.estudiantesForm.controls.telefono.setValue(objeto.telefono);
+    this.estudiantesForm.controls.tipoIdentificacion.setValue(objeto.tipoIdentificacion);
+    this.estudiantesForm.controls.identificacion.setValue(objeto.identificacion);
+    this.estudiantesForm.controls.idPrograma.setValue(objeto.idPrograma);
+    this.estudiantesForm.controls.idProyecto.setValue(objeto.idProyecto);
+    this.estudiantesForm.controls.estado.setValue(objeto.estado);
+  }
+
+  async onSubmit() {
     if (this.estudiantesForm.valid) {
-      Swal.fire('Felicidades', 'Registro exitoso', 'success');
+      let enviar = new estudiantesModel();
+      enviar.idUsuario = this.estudiantesForm.controls.idUsuario.value;
+      enviar.nombre = this.estudiantesForm.controls.nombre.value;
+      enviar.telefono = this.estudiantesForm.controls.telefono.value;
+      enviar.tipoIdentificacion = this.estudiantesForm.controls.tipoIdentificacion.value;
+      enviar.identificacion = this.estudiantesForm.controls.identificacion.value;
+      enviar.idPrograma = this.estudiantesForm.controls.idPrograma.value;
+      enviar.idProyecto = this.estudiantesForm.controls.idProyecto.value;
+      enviar.estado = this.estudiantesForm.controls.estado.value;
+
+      if (Boolean(this.data.id)) {
+        enviar.id = this.data.id;
+        await this.api.put('estudiantes', this.data.id, enviar);
+      } else {
+        await this.api.post('estudiantes', enviar);
+      }
+
+      this.ref.close();
+      Swal.fire('Felicidades', 'Dato enviado', 'success');
     } else {
-      Swal.fire('Error', 'Credenciales incorrectas', 'error');
+      Swal.fire('Felicidades', 'Dato enviado', 'success');
     }
   }
 

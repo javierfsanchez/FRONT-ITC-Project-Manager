@@ -8,9 +8,27 @@
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Titulo actividad" formControlName="titulo">
-              <mat-error *ngIf="actividadesForm.controls['titulo'].invalid">
-                {{mensajeDeError('titulo')}}
+              <input matInput placeholder="idEstudiante" formControlName="idEstudiante">
+              <mat-error *ngIf="actividadesForm.controls['idEstudiante'].invalid">
+                {{mensajeDeError('idEstudiante')}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="estado" formControlName="estado">
+              <mat-error *ngIf="actividadesForm.controls['estado'].invalid">
+                {{mensajeDeError('estado')}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Titulo actividad" formControlName="tituloActividad">
+              <mat-error *ngIf="actividadesForm.controls['tituloActividad'].invalid">
+                {{mensajeDeError('tituloActividad')}}
               </mat-error>
             </mat-form-field>
           </div>
@@ -27,13 +45,23 @@
         </div>
         <div class="row">
           <div class="col">
-            <mat-form-field>
-              <input matInput placeholder="Inicio" formControlName="inicio">
+            <mat-form-field class="full-width">
+              <input matInput [matDatepicker]="picker" placeholder="horas" formControlName="horas">
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="actividadesForm.controls['horas'].invalid">
+                {{mensajeDeError('horas')}}
+              </mat-error>
             </mat-form-field>
           </div>
           <div class="col">
-            <mat-form-field>
-              <input matInput placeholder="Termino" formControlName="termino">
+            <mat-form-field class="full-width">
+              <input matInput [matDatepicker]="picker1" placeholder="terminar" formControlName="terminar">
+              <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+              <mat-error *ngIf="actividadesForm.controls['terminar'].invalid">
+                {{mensajeDeError('terminar')}}
+              </mat-error>
             </mat-form-field>
           </div>
         </div>

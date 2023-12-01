@@ -8,17 +8,17 @@
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Nombre" formControlName="nombre">
-              <mat-error *ngIf="administradoresForm.controls['nombre'].invalid">
-                {{mensajeDeError('nombre')}}
+              <input matInput placeholder="idUsuario" formControlName="idUsuario">
+              <mat-error *ngIf="administradoresForm.controls['idUsuario'].invalid">
+                {{mensajeDeError('idUsuario')}}
               </mat-error>
             </mat-form-field>
           </div>
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Apellido" formControlName="apellido">
-              <mat-error *ngIf="administradoresForm.controls['apellido'].invalid">
-                {{mensajeDeError('apellido')}}
+              <input matInput placeholder="Estado" formControlName="estado">
+              <mat-error *ngIf="administradoresForm.controls['estado'].invalid">
+                {{mensajeDeError('estado')}}
               </mat-error>
             </mat-form-field>
           </div>
@@ -26,9 +26,19 @@
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Número celular" formControlName="celular">
-              <mat-error *ngIf="administradoresForm.controls['celular'].invalid">
-                {{mensajeDeError('celular')}}
+              <input matInput placeholder="Nombre" formControlName="nombre">
+              <mat-error *ngIf="administradoresForm.controls['nombre'].invalid">
+                {{mensajeDeError('nombre')}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Telefono" formControlName="telefono">
+              <mat-error *ngIf="administradoresForm.controls['telefono'].invalid">
+                {{mensajeDeError('telefono')}}
               </mat-error>
             </mat-form-field>
           </div>
@@ -37,7 +47,7 @@
       <mat-card-actions>
         <div class="centerbutton">
           <button mat-raised-button color="primary" type="submit">Enviar</button>
-        </div>
+        </div>      
       </mat-card-actions>
     </mat-card>
   </form>

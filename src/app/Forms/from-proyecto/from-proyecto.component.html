@@ -1,16 +1,16 @@
 <div class="container">
-  <form [formGroup]="formularioProyecto" (ngSubmit)="onSubmit()">
+  <form [formGroup]="proyectosForm" novalidate (ngSubmit)="onSubmit()">
     <mat-card class="shipping-card">
       <mat-card-header>
-        <mat-card-title>Formulario de Proyectos</mat-card-title>
+        <mat-card-title>Formulario Proyectos</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Nombre de proyecto" formControlName="proyect">
-              <mat-error *ngIf="formularioProyecto.controls['proyect'].hasError('required')">
-                Nombre del proyecto es <strong>requerido</strong>
+              <input matInput placeholder="Nombre Proyecto" formControlName="nombre">
+              <mat-error *ngIf="proyectosForm.controls['nombre'].invalid">
+                {{mensajeDeError('nombre')}}
               </mat-error>
             </mat-form-field>
           </div>
@@ -18,9 +18,9 @@
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Descripcion" formControlName="motivo">
-              <mat-error *ngIf="formularioProyecto.controls['motivo'].hasError('required')">
-                La descripcion es <strong>requerida</strong>
+              <textarea matInput placeholder="Descripción" formControlName="descripcion"></textarea>
+              <mat-error *ngIf="proyectosForm.controls['descripcion'].invalid">
+                {{mensajeDeError('descripcion')}}
               </mat-error>
             </mat-form-field>
           </div>
@@ -28,29 +28,56 @@
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Numero de integrantes" formControlName="motivo">
-              <mat-error *ngIf="formularioProyecto.controls['motivo'].hasError('required')">
-                El numero de integrantes es <strong>requerido</strong>
+              <input matInput placeholder="numeroIntegrantes" formControlName="numeroIntegrantes">
+              <mat-error *ngIf="proyectosForm.controls['numeroIntegrantes'].invalid">
+                {{mensajeDeError('numeroIntegrantes')}}
               </mat-error>
             </mat-form-field>
           </div>
-
-          <div class="row">
-            <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput placeholder="Ultima actualizacion" formControlName="docente">
-                <mat-error *ngIf="formularioProyecto.controls['docente'].hasError('required')">
-                  La ultima actualizacion es <strong>requerida</strong>
-                </mat-error>
-              </mat-form-field>
-            </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput [matDatepicker]="picker" placeholder="Última Actualizacion" formControlName="ultimaActualizacion">
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="proyectosForm.controls['ultimaActualizacion'].invalid">
+                {{mensajeDeError('ultimaActualizacion')}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Estado Proyecto" formControlName="estadoProyecto">
+              <mat-error *ngIf="proyectosForm.controls['estadoProyecto'].invalid">
+                {{mensajeDeError('estadoProyecto')}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="idTarjeta" formControlName="idTarjeta">
+              <mat-error *ngIf="proyectosForm.controls['idTarjeta'].invalid">
+                {{mensajeDeError('idTarjeta')}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Estado" formControlName="estado">
+              <mat-error *ngIf="proyectosForm.controls['estado'].invalid">
+                {{mensajeDeError('estado')}}
+              </mat-error>
+            </mat-form-field>
           </div>
         </div>
       </mat-card-content>
       <mat-card-actions>
         <div class="centerbutton">
           <button mat-raised-button color="primary" type="submit">Enviar</button>
-        </div>
+        </div>      
       </mat-card-actions>
     </mat-card>
   </form>

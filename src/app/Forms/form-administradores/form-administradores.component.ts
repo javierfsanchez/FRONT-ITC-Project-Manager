@@ -1,5 +1,8 @@
-import { Component, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { Component, Inject, OnInit, inject } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { administradoresModel } from 'src/app/Models/AdministradoresModel';
+import { RestService } from 'src/app/Services/rest.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -7,27 +10,52 @@ import Swal from 'sweetalert2';
   templateUrl: './form-administradores.component.html',
   styleUrls: ['./form-administradores.component.css']
 })
-export class FormAdministradoresComponent {
-  constructor() {}
+export class FormAdministradoresComponent implements OnInit {
+  constructor(
+    private api: RestService,
+    private ref: MatDialogRef<FormAdministradoresComponent>,
+    @Inject(MAT_DIALOG_DATA) private data: any
+  ) { }
 
   administradoresForm = new FormGroup({
-    nombre: new FormControl<string>(null, [Validators.required]),
-    apellido: new FormControl<string>(null, [Validators.required]),
-    celular: new FormControl<string>(null, [
-      Validators.required,
-      Validators.minLength(10),
-      Validators.maxLength(10),
-      Validators.pattern(/^[1-9]\d{9,11}$/),
-    ]),
+    idUsuario: new FormControl<number>(null, [Validators.required]),
+    nombre: new FormControl<string>('', [Validators.required]),
+    telefono: new FormControl<string>(''),
+    estado: new FormControl<string>('', [Validators.required]),
   });
 
-  hasUnitNumber = false;
+  ngOnInit(): void {
+    if (Boolean(this.data.id)) {
+      this.cargarform(this.data.id);
+    }
+  }
 
-  onSubmit(): void {
+  async cargarform(id: number) {
+    const objeto: administradoresModel = await this.api.getById("administradores", id);
+    this.administradoresForm.controls.idUsuario.setValue(objeto.idUsuario);
+    this.administradoresForm.controls.nombre.setValue(objeto.nombre);
+    this.administradoresForm.controls.telefono.setValue(objeto.telefono);
+    this.administradoresForm.controls.estado.setValue(objeto.estado);
+  }
+
+  async onSubmit() {
     if (this.administradoresForm.valid) {
-      Swal.fire('Felicidades', 'Registro exitoso', 'success');
-    } 
-    else {
+      let enviar = new administradoresModel();
+      enviar.idUsuario = this.administradoresForm.controls.idUsuario.value;
+      enviar.nombre = this.administradoresForm.controls.nombre.value;
+      enviar.telefono = this.administradoresForm.controls.telefono.value;
+      enviar.estado = this.administradoresForm.controls.estado.value;
+
+      if (Boolean(this.data.id)) {
+        enviar.id = this.data.id;
+        await this.api.put('administradores', this.data.id, enviar);
+      } else {
+        await this.api.post('administradores', enviar);
+      }
+
+      this.ref.close();
+      Swal.fire('Felicidades', 'Dato enviado', 'success');
+    } else {
       Swal.fire('Error', 'Credenciales incorrectas', 'error');
     }
   }

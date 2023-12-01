@@ -1,24 +1,18 @@
 <div class="container">
-  <form [formGroup]="formularioPresentaciones" (ngSubmit)="onSubmit()">
+  <form [formGroup]="presentacionesForm" novalidate (ngSubmit)="onSubmit()">
     <mat-card class="shipping-card">
       <mat-card-header>
-        <mat-card-title>Formulario de Presentaciones</mat-card-title>
+        <mat-card-title>Formulario Presentaciones</mat-card-title>
       </mat-card-header>
-      <mat-card-content at-card-content>
+      <mat-card-content>
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Dia de presentacion" formControlName="presentacion">
-              <mat-error *ngIf="formularioPresentaciones.controls['presentacion'].hasError('required')">
-                El dia de presentacion es <strong>requerido</strong>
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="col">
-            <mat-form-field class="full-width">
-              <input matInput placeholder="Salon" formControlName="salon">
-              <mat-error *ngIf="formularioPresentaciones.controls['salon'].hasError('required')">
-                El salon es <strong>requerida</strong>
+              <input matInput [matDatepicker]="picker" placeholder="Día Presentacion" formControlName="diaPresentacion">
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="presentacionesForm.controls['diaPresentacion'].invalid">
+                {{mensajeDeError('diaPresentacion')}}
               </mat-error>
             </mat-form-field>
           </div>
@@ -26,28 +20,44 @@
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Nombre del proyecto" formControlName="project">
-              <mat-error *ngIf="formularioPresentaciones.controls['project'].hasError('required')">
-                El nombre del proyecto es <strong>requerido</strong>
+              <input matInput placeholder="Salón" formControlName="salon">
+              <mat-error *ngIf="presentacionesForm.controls['salon'].invalid">
+                {{mensajeDeError('salon')}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="idProyecto" formControlName="idProyecto">
+              <mat-error *ngIf="presentacionesForm.controls['idProyecto'].invalid">
+                {{mensajeDeError('idProyecto')}}
               </mat-error>
             </mat-form-field>
           </div>
         </div>
-          <div class="row">
-            <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput placeholder="Nombre del docente" formControlName="docente">
-                <mat-error *ngIf="formularioPresentaciones.controls['docente'].hasError('required')">
-                  El nombre del docente es <strong>requerido</strong>
-                </mat-error>
-              </mat-form-field>
-            </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="idAdministrador" formControlName="idAdministrador">
+              <mat-error *ngIf="presentacionesForm.controls['idAdministrador'].invalid">
+                {{mensajeDeError('idAdministrador')}}
+              </mat-error>
+            </mat-form-field>
           </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Estado" formControlName="estado">
+              <mat-error *ngIf="presentacionesForm.controls['estado'].invalid">
+                {{mensajeDeError('estado')}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
       </mat-card-content>
       <mat-card-actions>
         <div class="centerbutton">
           <button mat-raised-button color="primary" type="submit">Enviar</button>
-        </div>
+        </div>      
       </mat-card-actions>
     </mat-card>
   </form>

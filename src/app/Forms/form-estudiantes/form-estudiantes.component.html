@@ -8,17 +8,17 @@
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Nombre" formControlName="nombre">
-              <mat-error *ngIf="estudiantesForm.controls['nombre'].invalid">
-                {{mensajeDeError('nombre')}}
+              <input matInput placeholder="idUsuario" formControlName="idUsuario">
+              <mat-error *ngIf="estudiantesForm.controls['idUsuario'].invalid">
+                {{mensajeDeError('idUsuario')}}
               </mat-error>
             </mat-form-field>
           </div>
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Apellido" formControlName="apellido">
-              <mat-error *ngIf="estudiantesForm.controls['apellido'].invalid">
-                {{mensajeDeError('apellido')}}
+              <input matInput placeholder="estado" formControlName="estado">
+              <mat-error *ngIf="estudiantesForm.controls['estado'].invalid">
+                {{mensajeDeError('estado')}}
               </mat-error>
             </mat-form-field>
           </div>
@@ -26,9 +26,19 @@
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Número celular" formControlName="celular">
-              <mat-error *ngIf="estudiantesForm.controls['celular'].invalid">
-                {{mensajeDeError('celular')}}
+              <input matInput placeholder="Nombre" formControlName="nombre">
+              <mat-error *ngIf="estudiantesForm.controls['nombre'].invalid">
+                {{mensajeDeError('nombre')}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Número celular" formControlName="telefono">
+              <mat-error *ngIf="estudiantesForm.controls['telefono'].invalid">
+                {{mensajeDeError('telefono')}}
               </mat-error>
             </mat-form-field>
           </div>
@@ -38,21 +48,39 @@
           <div class="col1">
             <mat-form-field class="full-width">
               <mat-label>Tipo</mat-label>
-              <mat-select formControlName="tipoidentificacion">
+              <mat-select formControlName="tipoIdentificacion">
                 <mat-option *ngFor="let id of identificacion" [value]="id.abbreviation">
                   {{id.abbreviation}}
                 </mat-option>
               </mat-select>
-              <mat-error *ngIf="estudiantesForm.controls['tipoidentificacion'].invalid">
-                {{mensajeDeError('tipoidentificacion')}}
+              <mat-error *ngIf="estudiantesForm.controls['tipoIdentificacion'].invalid">
+                {{mensajeDeError('tipoIdentificacion')}}
               </mat-error>
             </mat-form-field>
           </div>
           <div class="col2">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Número" formControlName="numeroidentificacion">
-              <mat-error *ngIf="estudiantesForm.controls['numeroidentificacion'].invalid">
-                {{mensajeDeError('numeroidentificacion')}}
+              <input matInput placeholder="Número" formControlName="identificacion">
+              <mat-error *ngIf="estudiantesForm.controls['identificacion'].invalid">
+                {{mensajeDeError('identificacion')}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="idPrograma" formControlName="idPrograma">
+              <mat-error *ngIf="estudiantesForm.controls['idPrograma'].invalid">
+                {{mensajeDeError('idPrograma')}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="idProyecto" formControlName="idProyecto">
+              <mat-error *ngIf="estudiantesForm.controls['idProyecto'].invalid">
+                {{mensajeDeError('idProyecto')}}
               </mat-error>
             </mat-form-field>
           </div>

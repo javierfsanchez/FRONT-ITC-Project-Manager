@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
   templateUrl: './proyecto.component.html',
   styleUrls: ['./proyecto.component.css']
 })
+
 export class ProyectoComponent implements OnInit, AfterViewInit {
     displayedColumns: string[] = [];  
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -56,9 +57,7 @@ export class ProyectoComponent implements OnInit, AfterViewInit {
                           `El registro con el id ${id} ha sido eliminado.`,
                           'success'
                       );
-                      setInterval(() => {
-                          window.location.reload();
-                      }, 2000);
+                      this.ngOnInit();
                   })
                   .catch((error) => {
                       console.error(error);
@@ -73,8 +72,11 @@ export class ProyectoComponent implements OnInit, AfterViewInit {
     //   this.api.delete("Estudiantes/", id);
     // }
 
-    public editarRegistro(index: number){
-      alert("Editando el registro");
+    public editarRegistro(index: any){
+      this.dialog.open(FromProyectoComponent, {
+        width: '50%',
+        data :{id: index.codigo}
+      }).afterClosed().subscribe((res)=>{this.ngOnInit()});
     }
     
     ngAfterViewInit(): void {
@@ -104,7 +106,8 @@ export class ProyectoComponent implements OnInit, AfterViewInit {
 
     openDialog() {
       this.dialog.open(FromProyectoComponent, {
-        width: '50%'
-      });
+        width: '50%', data: {}
+      }).afterClosed().subscribe((res)=>{this.ngOnInit()});
     }
   }
+  

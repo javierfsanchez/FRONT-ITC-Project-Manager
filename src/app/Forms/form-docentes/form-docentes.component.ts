@@ -1,5 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, Inject, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { docentesModel } from 'src/app/Models/DocentesModel';
+import { RestService } from 'src/app/Services/rest.service';
 import Swal from 'sweetalert2';
 
 
@@ -9,29 +12,53 @@ import Swal from 'sweetalert2';
   styleUrls: ['./form-docentes.component.css']
 })
 export class FormDocentesComponent {
-  constructor(){}
+  constructor(
+    private api: RestService,
+    private ref: MatDialogRef<FormDocentesComponent>,
+    @Inject(MAT_DIALOG_DATA) private data: any
+  ) { }
 
   docentesForm = new FormGroup({
-    nombre: new FormControl<string>(null, [Validators.required]),
-    apellido: new FormControl<string>(null, [Validators.required]),
-    tipoidentificacion: new FormControl<string>(null, [Validators.required]),
-    numeroidentificacion: new FormControl<string>(null,[
-      Validators.required,
-      Validators.pattern(/^[1-9]\d{1,50}$/)],   
-    ),
+    idUsuario: new FormControl<number>(null, [Validators.required]),
+    nombre: new FormControl<string>('', [Validators.required]),
+    identificacion: new FormControl<number>(null, [Validators.required]),
+    idPresentacion: new FormControl<number>(null, [Validators.required]),
+    estado: new FormControl<string>('', [Validators.required]),
   });
 
-  hasUnitNumber = false;
+  ngOnInit(): void {
+    if (Boolean(this.data.id)) {
+      this.cargarform(this.data.id);
+    }
+  }
 
-  identificacion = [  
-    { name: 'Ninguno' },
-    { name: 'Tarjeta de identidad', abbreviation: 'TI' },
-    { name: 'Cédula de ciudadanía', abbreviation: 'CC' },
-  ];
+  async cargarform(id: number) {
+    const objeto: docentesModel = await this.api.getById("docentes", id);
+    this.docentesForm.controls.idUsuario.setValue(objeto.idUsuario);
+    this.docentesForm.controls.nombre.setValue(objeto.nombre);
+    this.docentesForm.controls.identificacion.setValue(objeto.identificacion);
+    this.docentesForm.controls.idPresentacion.setValue(objeto.idPresentacion);
+    this.docentesForm.controls.estado.setValue(objeto.estado);
+  }
 
-  onSubmit(): void {
+  async onSubmit() {
     if (this.docentesForm.valid) {
-      Swal.fire('Felicidades', 'Registro exitoso', 'success');
+      let enviar = new docentesModel();
+      enviar.idUsuario = this.docentesForm.controls.idUsuario.value;
+      enviar.nombre = this.docentesForm.controls.nombre.value;
+      enviar.identificacion = this.docentesForm.controls.identificacion.value;
+      enviar.idPresentacion = this.docentesForm.controls.idPresentacion.value;
+      enviar.estado = this.docentesForm.controls.estado.value;
+
+      if (Boolean(this.data.id)) {
+        enviar.id = this.data.id;
+        await this.api.put('docentes', this.data.id, enviar);
+      } else {
+        await this.api.post('docentes', enviar);
+      }
+
+      this.ref.close();
+      Swal.fire('Felicidades', 'Dato enviado', 'success');
     } else {
       Swal.fire('Error', 'Credenciales incorrectas', 'error');
     }

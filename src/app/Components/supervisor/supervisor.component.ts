@@ -50,16 +50,14 @@ export class SupervisorComponent implements OnInit, AfterViewInit {
           confirmButtonText: 'Eliminar'
       }).then((result) => {
           if (result.isConfirmed) {
-              this.api.delete('Supervisores', id.toString(), { activo: false }) // Llama al método Put para marcar el estudiante como inactivo
+              this.api.delete('Supervisores', id.toString(), { activo: "I" }) // Llama al método Put para marcar el estudiante como inactivo
                   .then(() => {
                       Swal.fire(
                           'Eliminado!',
                           `El registro con el id ${id} ha sido eliminado.`,
                           'success'
                       );
-                      setInterval(() => {
-                          window.location.reload();
-                      }, 2000);
+                      this.ngOnInit();
                   })
                   .catch((error) => {
                       console.error(error);
@@ -74,8 +72,11 @@ export class SupervisorComponent implements OnInit, AfterViewInit {
     //   this.api.delete("Estudiantes/", id);
     // }
 
-    public editarRegistro(index: number){
-      alert("Editando el registro");
+    public editarRegistro(index: any){
+      this.dialog.open(FromSupervisorComponent, {
+        width: '50%',
+        data :{id: index.codigo}
+      }).afterClosed().subscribe((res)=>{this.ngOnInit()});
     }
     
     ngAfterViewInit(): void {
@@ -105,7 +106,7 @@ export class SupervisorComponent implements OnInit, AfterViewInit {
 
     openDialog() {
       this.dialog.open(FromSupervisorComponent, {
-        width: '50%'
-      });
+        width: '50%', data: {}
+      }).afterClosed().subscribe((res)=>{this.ngOnInit()});
     }
   }

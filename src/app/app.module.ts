@@ -47,6 +47,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { LoginComponent } from './Components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     FromSupervisorComponent,
     FromProyectoComponent,
     FromProgramaComponent,
-    FromPresentacionComponent
+    FromPresentacionComponent,
+    LoginComponent
   ],
   imports: [
     MatInputModule,

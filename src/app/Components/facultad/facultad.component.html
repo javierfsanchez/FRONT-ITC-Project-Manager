@@ -1,8 +1,13 @@
 <div class="container">
-  <mat-form-field>
-    <mat-label>Filtro</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Facultades" #input>
-  </mat-form-field>
+  <div class="filter">
+    <mat-form-field>
+      <mat-label>Filtro</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Facultades" #input>
+    </mat-form-field>
+    <div class="boton">
+      <button mat-raised-button color="primary" (click)="openDialog()">Nuevo</button>
+    </div>
+  </div>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort class="radius">
 
@@ -34,8 +39,5 @@
 
     <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]" aria-label="Select page of users"
       class="radius"></mat-paginator>
-  </div>
-  <div class="boton">
-    <button mat-raised-button color="primary" (click)="openDialog()">Nuevo</button>
   </div>
 </div>

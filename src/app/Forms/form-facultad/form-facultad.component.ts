@@ -25,7 +25,6 @@ export class FormFacultadComponent implements OnInit{
     this.facultadesForm.controls.descripcion.setValue(objeto.descripcion);
     this.facultadesForm.controls.telefono_contacto.setValue(objeto.telefonoContacto);
     this.facultadesForm.controls.correo.setValue(objeto.correo);
-    this.facultadesForm.controls.estado.setValue(objeto.estado);
   }
 
   facultadesForm = new FormGroup({
@@ -36,7 +35,6 @@ export class FormFacultadComponent implements OnInit{
       Validators.maxLength(30),
     ]),
     correo: new FormControl<string>(null, [Validators.required]),
-    estado: new FormControl<string>(null, [Validators.required]),
   });
 
   hasUnitNumber = false;
@@ -48,7 +46,7 @@ export class FormFacultadComponent implements OnInit{
       nuevo.descripcion = this.facultadesForm.controls.descripcion.value;
       nuevo.telefonoContacto = this.facultadesForm.controls.telefono_contacto.value;
       nuevo.correo = this.facultadesForm.controls.correo.value;
-      nuevo.estado = this.facultadesForm.controls.estado.value;
+      nuevo.estado = "A";
       
       if (Boolean(this.data.id)){
         nuevo.id=this.data.id;

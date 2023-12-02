@@ -16,7 +16,7 @@ export class FormUsuarioComponent implements OnInit{
   usuariosForm = new FormGroup({
     correo: new FormControl<string>('', [Validators.required]),
     contraseña: new FormControl<string>('', [Validators.required]),
-    estado: new FormControl<string>('', [Validators.required]),
+    //estado: new FormControl<string>('', [Validators.required]),
   });
 
   ngOnInit(): void {
@@ -29,7 +29,7 @@ export class FormUsuarioComponent implements OnInit{
     const objeto: usuariosModel = await this.api.getById("usuarios", id);
     this.usuariosForm.controls.correo.setValue(objeto.correo);
     this.usuariosForm.controls.contraseña.setValue(objeto.contraseña);
-    this.usuariosForm.controls.estado.setValue(objeto.estado);
+    
   }
 
   async onSubmit() {
@@ -37,7 +37,7 @@ export class FormUsuarioComponent implements OnInit{
       let enviar = new usuariosModel();
       enviar.correo = this.usuariosForm.controls.correo.value;
       enviar.contraseña = this.usuariosForm.controls.contraseña.value;
-      enviar.estado = this.usuariosForm.controls.estado.value;
+      enviar.estado = "A";
 
       if (Boolean(this.data.id)) {
         enviar.id = this.data.id;

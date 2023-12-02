@@ -23,7 +23,7 @@ export class FormDocentesComponent {
     nombre: new FormControl<string>('', [Validators.required]),
     identificacion: new FormControl<number>(null, [Validators.required]),
     idPresentacion: new FormControl<number>(null, [Validators.required]),
-    estado: new FormControl<string>('', [Validators.required]),
+    //estado: new FormControl<string>('', [Validators.required]),
   });
 
   ngOnInit(): void {
@@ -38,7 +38,7 @@ export class FormDocentesComponent {
     this.docentesForm.controls.nombre.setValue(objeto.nombre);
     this.docentesForm.controls.identificacion.setValue(objeto.identificacion);
     this.docentesForm.controls.idPresentacion.setValue(objeto.idPresentacion);
-    this.docentesForm.controls.estado.setValue(objeto.estado);
+    //this.docentesForm.controls.estado.setValue(objeto.estado);
   }
 
   async onSubmit() {
@@ -48,7 +48,7 @@ export class FormDocentesComponent {
       enviar.nombre = this.docentesForm.controls.nombre.value;
       enviar.identificacion = this.docentesForm.controls.identificacion.value;
       enviar.idPresentacion = this.docentesForm.controls.idPresentacion.value;
-      enviar.estado = this.docentesForm.controls.estado.value;
+      enviar.estado = "A";
 
       if (Boolean(this.data.id)) {
         enviar.id = this.data.id;

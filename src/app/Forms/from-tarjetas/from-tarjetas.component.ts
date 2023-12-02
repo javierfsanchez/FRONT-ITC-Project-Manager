@@ -22,7 +22,7 @@ export class FromTarjetasComponent {
     fechaSubida: new FormControl<Date>(null, [Validators.required]),
     fechaTerminado: new FormControl<Date>(undefined),
     estadoTarjeta: new FormControl<string>('', [Validators.required]),
-    estado: new FormControl<string>('', [Validators.required])
+    //estado: new FormControl<string>('', [Validators.required])
   });
 
   ngOnInit(): void {
@@ -41,7 +41,7 @@ export class FromTarjetasComponent {
     this.tarjetasForm.controls.fechaSubida.setValue(objeto.fechaSubida);
     this.tarjetasForm.controls.fechaTerminado.setValue(objeto.fechaTerminado);
     this.tarjetasForm.controls.estadoTarjeta.setValue(objeto.estadoTarjeta);
-    this.tarjetasForm.controls.estado.setValue(objeto.estado);
+    //this.tarjetasForm.controls.estado.setValue(objeto.estado);
   }
 
   async onSubmit() {
@@ -55,7 +55,7 @@ export class FromTarjetasComponent {
       enviar.fechaSubida = this.tarjetasForm.controls.fechaSubida.value;
       enviar.fechaTerminado = this.tarjetasForm.controls.fechaTerminado.value;
       enviar.estadoTarjeta = this.tarjetasForm.controls.estadoTarjeta.value;
-      enviar.estado = this.tarjetasForm.controls.estado.value;
+      enviar.estado = "A";
 
       if (Boolean(this.data.id)) {
         enviar.id = this.data.id;

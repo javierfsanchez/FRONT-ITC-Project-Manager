@@ -21,7 +21,7 @@ export class FormAdministradoresComponent implements OnInit {
     idUsuario: new FormControl<number>(null, [Validators.required]),
     nombre: new FormControl<string>('', [Validators.required]),
     telefono: new FormControl<string>(''),
-    estado: new FormControl<string>('', [Validators.required]),
+    //estado: new FormControl<string>('', [Validators.required]),
   });
 
   ngOnInit(): void {
@@ -35,7 +35,7 @@ export class FormAdministradoresComponent implements OnInit {
     this.administradoresForm.controls.idUsuario.setValue(objeto.idUsuario);
     this.administradoresForm.controls.nombre.setValue(objeto.nombre);
     this.administradoresForm.controls.telefono.setValue(objeto.telefono);
-    this.administradoresForm.controls.estado.setValue(objeto.estado);
+    //this.administradoresForm.controls.estado.setValue(objeto.estado);
   }
 
   async onSubmit() {
@@ -44,7 +44,7 @@ export class FormAdministradoresComponent implements OnInit {
       enviar.idUsuario = this.administradoresForm.controls.idUsuario.value;
       enviar.nombre = this.administradoresForm.controls.nombre.value;
       enviar.telefono = this.administradoresForm.controls.telefono.value;
-      enviar.estado = this.administradoresForm.controls.estado.value;
+      enviar.estado = "A";
 
       if (Boolean(this.data.id)) {
         enviar.id = this.data.id;
